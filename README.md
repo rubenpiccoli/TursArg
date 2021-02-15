@@ -6,8 +6,8 @@ Desarrollado por el "Grupo 1C" para el proyecto final del curso "Desarrollador F
 Curso dicatdo por el "Instituto Superior Politécnico de Córdoba" entre Noviembre de 2020 y mayo de 2021.
 
 Desarrolladores:
-MEDINA, Ricardo Daniel
-MORAN DIEZ, Nahuel Daniel
-PEREZ, Leandro Martin
-PICCOLI, Ruben Dario
-PONTI, Luis Cesar
+MEDINA, Ricardo Daniel.
+MORAN DIEZ, Nahuel Daniel.
+PEREZ, Leandro Martin.
+PICCOLI, Ruben Dario.
+PONTI, Luis Cesar.

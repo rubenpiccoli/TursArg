@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Acer\source\repos\TursArg\app\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\Leandro\Desktop\repo TursArg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\app\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

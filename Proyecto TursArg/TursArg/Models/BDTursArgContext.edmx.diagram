@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6474d71e9a1d40eaba856e63fe1e60a6" Name="Diagram1">
-        <EntityTypeShape EntityType="BDTursArgModel.Usuarios" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDTursArgModel.Usuarios" Width="2" PointX="0.5" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

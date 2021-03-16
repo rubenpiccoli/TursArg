@@ -32,10 +32,12 @@ namespace TursArg.Controllers
             {
                 return View();
             }
+
             usuario.rolAdmin = false;
             bd.Usuarios.Add(usuario);
             bd.SaveChanges();
             return RedirectToAction("Index");
+            
         }
     }
 }

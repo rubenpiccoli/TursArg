@@ -1,12 +1,5 @@
-create database turismoG1_3
-use turismoG1_3
-
--- tabla ROLES
-create table ROLES(
-idRol int NOT NULL IDENTITY (1,1),
-nombreRol varchar(50),
-constraint pk_cr primary key(idRol)
-)
+create database BDTursArg
+use BDTursArg
 
 -- tabla USUARIOS ACTOR
 create table USUARIOS(
@@ -16,11 +9,10 @@ nombreUsuario varchar(50),
 nombre varchar(50),
 apellido varchar(50),
 telefono bigint,
-email varchar(100),
+mail varchar(100),
 contrasenia varchar(50),
-idRol_usuario int,
+rolAdmin int,
 constraint pk_cu primary key(idUsuario),
-constraint fk_fRol_usuario foreign key(idRol_usuario) references ROLES (idRol)
 )
 
 -- tabla CHATS,  para guardar la consulta que envia el usuario

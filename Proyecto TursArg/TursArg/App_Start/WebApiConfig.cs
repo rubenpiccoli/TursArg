@@ -13,9 +13,9 @@ namespace TursArg
         {
 
             //enable cors
-            config.EnableCors(new EnableCorsAttribute("http//localhost:4200", headers: "*", methods: "*"));
+            config.EnableCors(new EnableCorsAttribute("https://localhost:4200", headers: "*", methods: "*"));
 
-            //config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

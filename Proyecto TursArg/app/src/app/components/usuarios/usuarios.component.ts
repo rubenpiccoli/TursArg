@@ -18,7 +18,7 @@ export class UsuariosComponent implements OnInit {
     if (form != null)
       form.resetForm();
     this.service.formData = {
-      idUsuario: null,
+      idUsuario: 0,
       urlFotoUsuario: '',
       nombreUsuario: '',
       nombre: '',

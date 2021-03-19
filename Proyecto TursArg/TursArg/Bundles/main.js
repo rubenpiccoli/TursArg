@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 class UsuariosService {
     constructor(http) {
         this.http = http;
-        this.rootURL = 'https://localhost:44332/api/USUARIOS1';
+        this.rootURL = 'https://localhost:44332/api';
     }
     postUsuario(formData) {
         return this.http.post(this.rootURL + '/USUARIOS1', formData);
@@ -872,7 +872,7 @@ class UsuariosComponent {
         if (form != null)
             form.resetForm();
         this.service.formData = {
-            idUsuario: null,
+            idUsuario: 0,
             urlFotoUsuario: '',
             nombreUsuario: '',
             nombre: '',

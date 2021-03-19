@@ -7,8 +7,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsuariosService {
+
   formData: Usuarios;
-  readonly rootURL = 'https://localhost:44332/api/USUARIOS1'
+
+  readonly rootURL = 'https://localhost:44332/api'
 
 
   constructor(private http: HttpClient) { }

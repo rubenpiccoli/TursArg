@@ -8,14 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsuariosService {
   formData: Usuarios;
-  readonly rootURL = 'https://localhost:44340/api'
+  readonly rootURL = 'https://localhost:44332/api/USUARIOS1'
 
 
   constructor(private http: HttpClient) { }
 
   postUsuario(formData: Usuarios) {
 
-    return this.http.post(this.rootURL + '/Usuarios', formData);
+    return this.http.post(this.rootURL + '/USUARIOS1', formData);
   }
 
 

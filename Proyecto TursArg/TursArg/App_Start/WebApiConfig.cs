@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace TursArg
 {
@@ -9,7 +10,11 @@ namespace TursArg
     {
         public static void Register(HttpConfiguration config)
         {
-            config.MapHttpAttributeRoutes();
+
+            //enable cors
+            config.EnableCors(new EnableCorsAttribute("http//localhost:4200", headers: "*", methods: "*"));
+
+            //config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

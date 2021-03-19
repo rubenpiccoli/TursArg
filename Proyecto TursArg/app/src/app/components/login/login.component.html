@@ -8,6 +8,10 @@
     <title>Login TursArg</title>
 </head>
 
+<!-- Aca llamamos al componente del navbar -->
+
+<app-navbar></app-navbar>
+
 <body>
     <div class="container-fluid">
         <div class="row no-gutter">
@@ -16,7 +20,7 @@
                 <div class="login d-flex align-items-center py-0">
                     <div class="container">
                         <div class="logo ">
-                            <img src="/assets/img/LogoTursArg.png" alt="">
+                            <img src="../../../assets/img/LogoTursArg.png" alt="">
                         </div>
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto pt-2 pb-0">
@@ -26,6 +30,7 @@
                                         <h5>Email</h5>
                                         <input style="padding-left: 1rem;" type="email" id="inputEmail"
                                             class="form-control" required autofocus>
+
                                         <label for="inputEmail"></label>
                                     </div>
 
@@ -44,7 +49,8 @@
                                             contraseña</label>
                                     </div>
                                     <button
-                                        class="btn btn-lg btn-primary btn-block btn-login font-weight-bold mb-2 pb-2"
+                                        style="background-color: rgb(159, 215, 252); color: black; font-weight: 600;"
+                                        class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2"
                                         type="submit">Iniciar Sesion</button>
                                     <div class="text-center py-2">
                                         <a target="_blank" href="https://www.google.com">Registrate aqui</a>
@@ -64,6 +70,10 @@
         </div>
     </div>
 </body>
+
+<!-- Aca llamamos al componente del footer -->
+
+<app-footer></app-footer>
 
 
 </html>

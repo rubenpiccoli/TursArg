@@ -7,7 +7,7 @@ export class Usuarios {
     nombre: string;
     apellido: string;
     contrasenia: string;
-    telefono: bigint;
-    rolAdmin: boolean;
+    // telefono: bigint;
+    // rolAdmin: boolean;
     mail: string;
 }

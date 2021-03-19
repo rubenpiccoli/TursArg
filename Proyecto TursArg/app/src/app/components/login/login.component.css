@@ -18,7 +18,7 @@
   background-image: url("/assets/img/VIVI-ARGENTINA-ENTRE-RIOS-EL-PALMAR.jpg");
   background-size: cover;
   background-position: center;
-  border: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .login-heading {

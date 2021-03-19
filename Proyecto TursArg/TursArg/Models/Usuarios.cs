@@ -12,16 +12,16 @@ namespace TursArg.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class USUARIOS
     {
         public int idUsuario { get; set; }
         public string urlFotoUsuario { get; set; }
         public string nombreUsuario { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
-        public string contrasenia { get; set; }
         public Nullable<long> telefono { get; set; }
-        public bool rolAdmin { get; set; }
         public string mail { get; set; }
+        public string contrasenia { get; set; }
+        public Nullable<bool> rolAdmin { get; set; }
     }
 }

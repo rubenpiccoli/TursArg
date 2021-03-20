@@ -14,7 +14,7 @@ namespace TursArg.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            List<Usuarios> listaUsuarios = bd.Usuarios.ToList();
+            List<USUARIOS> listaUsuarios = bd.USUARIOS.ToList();
             return View(listaUsuarios);
 
         }
@@ -22,22 +22,20 @@ namespace TursArg.Controllers
         // Post, asi que lo sobrecargue.
         public ActionResult registrarUsuario()
         {
-            
+
             return View();
         }
         [HttpPost]
-        public ActionResult registrarUsuario(Usuarios usuario)
+        public ActionResult registrarUsuario(USUARIOS usuario)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-
             usuario.rolAdmin = false;
-            bd.Usuarios.Add(usuario);
+            bd.USUARIOS.Add(usuario);
             bd.SaveChanges();
             return RedirectToAction("Index");
-            
         }
     }
 }

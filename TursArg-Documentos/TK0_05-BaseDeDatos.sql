@@ -1,12 +1,5 @@
-create database turismoG1_3
-use turismoG1_3
-
--- tabla ROLES
-create table ROLES(
-idRol int NOT NULL IDENTITY (1,1),
-nombreRol varchar(50),
-constraint pk_cr primary key(idRol)
-)
+create BDTursAgr
+use BDTursAgr
 
 -- tabla USUARIOS ACTOR
 create table USUARIOS(
@@ -19,8 +12,8 @@ telefono bigint,
 email varchar(100),
 contrasenia varchar(50),
 idRol_usuario int,
+rolAdmin bit,
 constraint pk_cu primary key(idUsuario),
-constraint fk_fRol_usuario foreign key(idRol_usuario) references ROLES (idRol)
 )
 
 -- tabla CHATS,  para guardar la consulta que envia el usuario
@@ -126,16 +119,16 @@ constraint fk_fcodp_hclim foreign key(codPostal_HistoClim) references CIUDADES (
 
 -- relacion de las tablas USUARIOS CIUDADES
 create table USUARIOS_CIUDADES(
-idUsuario_codPostal int,
-codPostal_idUsuario int,
+idUsuario_codPostal int NOT NULL,
+codPostal_idUsuario int NOT NULL,
 constraint fk_fUsuPos foreign key(idUsuario_codPostal) references USUARIOS(idUsuario),
 constraint fk_fPosUsu foreign key(codPostal_idUsuario) references CIUDADES (codPostal)
 )
 
 -- relacion de las tablas ITINERARIOS_ATRACCIONES
 create table ITINERARIOS_ATRACCIONES(
-idItinerario_idAtraccion int,
-idAtraccion_idItinerario int,
+idItinerario_idAtraccion int NOT NULL,
+idAtraccion_idItinerario int NOT NULL,
 constraint fk_fItiAtra foreign key(idItinerario_idAtraccion) references ITINERARIOS (idItinerario),
 constraint fk_fAtraIti foreign key(idAtraccion_idItinerario) references ATRACCIONES (idAtraccion)
 )

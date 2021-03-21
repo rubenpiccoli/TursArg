@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes =
   [
@@ -20,7 +21,7 @@ const routes: Routes =
     { path: 'Itinerarios', component: ItinerariosComponent },
     { path: 'Foro', component: ForoComponent },
     { path: 'Chat', component: ChatComponent },
-    { path: 'registerUser', component: UsuariosComponent },
+    { path: 'registerUser', component: RegisterComponent },
 
   ];
 

@@ -18,6 +18,7 @@ import { AtraccionesComponent } from './components/atracciones/atracciones.compo
 import { UsuariosService } from './services/usuarios.service';
 import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [UsuariosService],
   bootstrap: [AppComponent]

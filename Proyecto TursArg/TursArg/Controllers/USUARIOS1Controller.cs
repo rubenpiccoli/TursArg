@@ -79,6 +79,8 @@ namespace TursArg.Controllers
                 return BadRequest(ModelState);
             }
 
+
+            uSUARIOS.rolAdmin = false;
             db.USUARIOS.Add(uSUARIOS);
             db.SaveChanges();
 

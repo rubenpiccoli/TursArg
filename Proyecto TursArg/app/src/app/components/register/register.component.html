@@ -1,1 +1,157 @@
-<p>register works!</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Registrarse en TursArg</title>
+    <link rel="stylesheet" href="register.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- Aca llamamos al componente del navbar -->
+
+<app-navbar></app-navbar>
+
+<body>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-0">
+                    <div class="container">
+                        <div class="logo ">
+                            <img src="https://i.ibb.co/4jwSdVQ/Logo-Turs-Arg.png" alt="">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto pt-2 pb-0">
+                                <h3 class="login-heading mb-4">Registrarse en TursArg</h3>
+                                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                                    <div class="form-label-group">
+                                        <h6>Nombre</h6>
+                                        <input name="nombre" #nombre="ngModel" type="text"
+                                            [(ngModel)]="service.formData.nombre" type="text"
+                                            style="padding-left: 1rem;" type="text" id="" class="form-control" required
+                                            autofocus>
+
+                                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                                            class="alert alert-danger">
+                                            <div *ngIf="nombre.invalid">
+                                                Introduzca un nombre
+                                            </div>
+                                        </div>
+
+                                        <label for="inputEmail"></label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <h6>Apellido</h6>
+                                        <input name="apellido" #apellido="ngModel" type="text"
+                                            [(ngModel)]="service.formData.apellido" type="text"
+                                            style="padding-left: 1rem;" type="text" id="" class="form-control" required
+                                            autofocus>
+
+                                        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+                                            class="alert alert-danger">
+                                            <div *ngIf="apellido.invalid">
+                                                Introduzca un apellido
+                                            </div>
+                                        </div>
+
+                                        <label for="inputEmail"></label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <h6>Nombre de Usuario</h6>
+                                        <input name="nombreUsuario" #nombreUsuario="ngModel"
+                                            [(ngModel)]="service.formData.nombreUsuario" type="email"
+                                            style="padding-left: 1rem;" type="email" id="" class="form-control" required
+                                            autofocus>
+
+                                        <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)"
+                                            class="alert alert-danger">
+                                            <div *ngIf="nombreUsuario.invalid">
+                                                Introduzca un nombre de usuario
+                                            </div>
+                                        </div>
+                                        <label for="inputEmail"></label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <h6>Email</h6>
+                                        <input name="mail" #mail="ngModel" type="email"
+                                            [(ngModel)]="service.formData.mail" type="email" style="padding-left: 1rem;"
+                                            type="email" id="inputEmail" class="form-control" required autofocus>
+
+                                        <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+                                            class="alert alert-danger">
+                                            <div *ngIf="mail.invalid">
+                                                Introduzca un email
+                                            </div>
+
+                                        </div>
+                                        <label for="inputEmail"></label>
+                                    </div>
+
+                                    <div class="form-label-group">
+                                        <h6>Contraseña</h6>
+                                        <input name="contrasenia" #contrasenia="ngModel" required minlength="6"
+                                            [(ngModel)]="service.formData.contrasenia" style="padding-left: 1rem;"
+                                            type="password" id="inputPassword" class="form-control">
+
+                                        <div *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)"
+                                            class="alert alert-danger">
+                                            <div *ngIf="contrasenia.invalid">
+                                                La contraseña es obligatoria
+                                            </div>
+                                            <div *ngIf="contrasenia.errors.minlength">
+                                                La contraseña debe tener al menos 6 caracteres.
+                                            </div>
+
+                                        </div>
+
+                                        <label for="inputPassword"></label>
+                                    </div>
+
+                                    <button style="font-weight: 700;"
+                                        class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2"
+                                        type="submit">Registrarse</button>
+                                    <div class="text-center py-2">
+                                        <a routerLink="/login" href="">¿Tienes
+                                            cuenta? Inicia
+                                            Sesion</a>
+                                        <br>
+                                    </div>
+
+                                    <div class="text-center pb-2">
+                                        <a routerLink="/index" href="">Pagina
+                                            Principal</a>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+<!-- Aca llamamos al componente del footer -->
+
+<app-footer></app-footer>
+
+
+</html>

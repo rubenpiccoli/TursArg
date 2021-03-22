@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -29,13 +30,14 @@ export class RegisterComponent implements OnInit {
       contrasenia: '',
       // telefono: '',
       // rolAdmin: '',
-      mail: ''
+      email: ''
     };
   }
 
   onSubmit(form: NgForm) {
 
     this.insertRecord(form);
+    swal.fire('Enhorabuena', 'Usuario registrado exitosamente', 'success');
 
     // alert("Felicidades, has sido registrad@");
   }

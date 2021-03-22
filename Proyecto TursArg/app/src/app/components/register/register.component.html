@@ -34,8 +34,7 @@
                                 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
                                     <div class="form-label-group">
                                         <h6>Nombre</h6>
-                                        <input name="nombre" #nombre="ngModel" type="text"
-                                            [(ngModel)]="service.formData.nombre" type="text"
+                                        <input name="nombre" #nombre="ngModel" [(ngModel)]="service.formData.nombre"
                                             style="padding-left: 1rem;" type="text" id="" class="form-control" required
                                             autofocus>
 
@@ -50,10 +49,9 @@
                                     </div>
                                     <div class="form-label-group">
                                         <h6>Apellido</h6>
-                                        <input name="apellido" #apellido="ngModel" type="text"
-                                            [(ngModel)]="service.formData.apellido" type="text"
-                                            style="padding-left: 1rem;" type="text" id="" class="form-control" required
-                                            autofocus>
+                                        <input name="apellido" #apellido="ngModel"
+                                            [(ngModel)]="service.formData.apellido" style="padding-left: 1rem;"
+                                            type="text" id="" class="form-control" required autofocus>
 
                                         <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
                                             class="alert alert-danger">
@@ -67,9 +65,8 @@
                                     <div class="form-label-group">
                                         <h6>Nombre de Usuario</h6>
                                         <input name="nombreUsuario" #nombreUsuario="ngModel"
-                                            [(ngModel)]="service.formData.nombreUsuario" type="email"
-                                            style="padding-left: 1rem;" type="email" id="" class="form-control" required
-                                            autofocus>
+                                            [(ngModel)]="service.formData.nombreUsuario" type="text"
+                                            style="padding-left: 1rem;" id="" class="form-control" required autofocus>
 
                                         <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)"
                                             class="alert alert-danger">
@@ -81,13 +78,13 @@
                                     </div>
                                     <div class="form-label-group">
                                         <h6>Email</h6>
-                                        <input name="mail" #mail="ngModel" type="email"
-                                            [(ngModel)]="service.formData.mail" type="email" style="padding-left: 1rem;"
-                                            type="email" id="inputEmail" class="form-control" required autofocus>
+                                        <input name="email" #email="ngModel" [(ngModel)]="service.formData.email"
+                                            type="email" style="padding-left: 1rem;" id="inputEmail"
+                                            class="form-control" required autofocus>
 
-                                        <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+                                        <div *ngIf="email.invalid && (email.dirty || email.touched)"
                                             class="alert alert-danger">
-                                            <div *ngIf="mail.invalid">
+                                            <div *ngIf="email.invalid">
                                                 Introduzca un email
                                             </div>
 
@@ -115,9 +112,14 @@
                                         <label for="inputPassword"></label>
                                     </div>
 
+                                    <div class="alerta-registro" role="alert">
+
+                                    </div>
+
                                     <button style="font-weight: 700;"
-                                        class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2"
-                                        type="submit">Registrarse</button>
+                                        class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2" type="submit"
+                                        id="btnRegister">Registrarse</button>
+
                                     <div class="text-center py-2">
                                         <a routerLink="/login" href="">¿Tienes
                                             cuenta? Inicia
@@ -147,6 +149,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </body>
 
 <!-- Aca llamamos al componente del footer -->

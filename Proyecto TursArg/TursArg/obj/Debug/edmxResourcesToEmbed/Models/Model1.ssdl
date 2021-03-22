@@ -108,7 +108,6 @@ advertencia 6002: La tabla o vista 'BDTursAgr.dbo.ITINERARIOS_ATRACCIONES' no ti
     <Property Name="telefono" Type="bigint" />
     <Property Name="email" Type="varchar" MaxLength="100" />
     <Property Name="contrasenia" Type="varchar" MaxLength="50" />
-    <Property Name="idRol_usuario" Type="int" />
     <Property Name="rolAdmin" Type="bit" />
   </EntityType>
   <!--Errores durante la generación:

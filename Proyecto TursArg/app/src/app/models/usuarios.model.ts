@@ -8,5 +8,5 @@ export class Usuarios {
     apellido: string;
     contrasenia: string;
     // telefono: bigint;
-    mail: string;
+    email: string;
 }

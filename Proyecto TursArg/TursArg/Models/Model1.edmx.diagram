@@ -4,8 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eacb08837c1c493a98c511201ef26b0d" Name="Diagram1">
+      <Diagram DiagramId="eacb08837c1c493a98c511201ef26b0d" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="BDTursArgModel.USUARIOS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDTursArgModel.ATRACCIONES" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="BDTursArgModel.CHATS" Width="1.5" PointX="5.25" PointY="11.625" />
+        <EntityTypeShape EntityType="BDTursArgModel.CIUDADES" Width="1.5" PointX="5.5" PointY="0.75" />
+        <EntityTypeShape EntityType="BDTursArgModel.DEPARTAMENTOS" Width="1.5" PointX="1.5" PointY="5.875" />
+        <EntityTypeShape EntityType="BDTursArgModel.HISTORIAL_CLIMATICO" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="BDTursArgModel.ITINERARIOS" Width="1.5" PointX="5.25" PointY="16.375" />
+        <EntityTypeShape EntityType="BDTursArgModel.PUBLICACIONES" Width="1.5" PointX="7.5" PointY="4.625" />
+        <EntityTypeShape EntityType="BDTursArgModel.TEMAS_DE_FORO" Width="1.5" PointX="5.25" PointY="8.875" />
+        <AssociationConnector Association="BDTursArgModel.fk_fpostal_atracc" />
+        <AssociationConnector Association="BDTursArgModel.fk_fUsuChat" />
+        <AssociationConnector Association="BDTursArgModel.fk_fcodp_hclim" />
+        <AssociationConnector Association="BDTursArgModel.fk_fdpto_c" />
+        <AssociationConnector Association="BDTursArgModel.fk_fid_User" />
+        <AssociationConnector Association="BDTursArgModel.fk_ftema_publi" />
+        <AssociationConnector Association="BDTursArgModel.fk_cut" />
+        <AssociationConnector Association="BDTursArgModel.ITINERARIOS_ATRACCIONES" />
+        <AssociationConnector Association="BDTursArgModel.USUARIOS_CIUDADES" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

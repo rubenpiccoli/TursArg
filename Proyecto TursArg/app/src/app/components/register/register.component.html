@@ -78,9 +78,10 @@
                                     </div>
                                     <div class="form-label-group">
                                         <h6>Email</h6>
-                                        <input name="email" #email="ngModel" [(ngModel)]="service.formData.email"
-                                            type="email" style="padding-left: 1rem;" id="inputEmail"
-                                            class="form-control" required autofocus>
+                                        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$" name="email"
+                                            #email="ngModel" [(ngModel)]="service.formData.email" type="email"
+                                            style="padding-left: 1rem;" id="inputEmail" class="form-control" required
+                                            autofocus>
 
                                         <div *ngIf="email.invalid && (email.dirty || email.touched)"
                                             class="alert alert-danger">
@@ -116,7 +117,7 @@
 
                                     </div>
 
-                                    <button style="font-weight: 700;"
+                                    <button style="font-weight: 700;" [disabled]="form.invalid"
                                         class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2" type="submit"
                                         id="btnRegister">Registrarse</button>
 

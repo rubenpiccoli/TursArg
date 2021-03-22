@@ -11,7 +11,6 @@ apellido varchar(50),
 telefono bigint,
 email varchar(100),
 contrasenia varchar(50),
-idRol_usuario int,
 rolAdmin bit,
 constraint pk_cu primary key(idUsuario),
 )

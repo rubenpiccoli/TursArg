@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDTursArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ATRACCIONES">
+    <Key>
+      <PropertyRef Name="idAtraccion" />
+    </Key>
+    <Property Name="idAtraccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreAtraccion" Type="varchar" MaxLength="50" />
+    <Property Name="direccionAtraccion" Type="varchar" MaxLength="50" />
+    <Property Name="descripcionAtraccion" Type="varchar" MaxLength="50" />
+    <Property Name="horarioAtraccion" Type="varchar" MaxLength="50" />
+    <Property Name="tarifaAtraccion" Type="varchar" MaxLength="50" />
+    <Property Name="serviciosAtraccion" Type="varchar" MaxLength="50" />
+    <Property Name="urlUbicacionAtraccion" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoAtraccion1" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoAtraccion2" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoAtraccion3" Type="varchar" MaxLength="150" />
+    <Property Name="codPostal_Atraccion" Type="int" />
+  </EntityType>
+  <EntityType Name="CHATS">
+    <Key>
+      <PropertyRef Name="idChat" />
+    </Key>
+    <Property Name="idChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaChat" Type="date" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="consulta" Type="text" />
+    <Property Name="idUsuario_Chat" Type="int" />
+  </EntityType>
+  <EntityType Name="CIUDADES">
+    <Key>
+      <PropertyRef Name="codPostal" />
+    </Key>
+    <Property Name="codPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcionCiudad" Type="varchar" MaxLength="50" />
+    <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
+    <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad2" Type="varchar" MaxLength="150" />
+    <Property Name="urlfotoCiudad3" Type="varchar" MaxLength="150" />
+    <Property Name="idDepartamento_ciudad" Type="int" />
+  </EntityType>
+  <EntityType Name="DEPARTAMENTOS">
+    <Key>
+      <PropertyRef Name="idDepartamento" />
+    </Key>
+    <Property Name="idDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreDepartamento" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HISTORIAL_CLIMATICO">
+    <Key>
+      <PropertyRef Name="idClima" />
+    </Key>
+    <Property Name="idClima" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaClima" Type="date" />
+    <Property Name="tempMin" Type="varchar" MaxLength="50" />
+    <Property Name="tempMax" Type="varchar" MaxLength="50" />
+    <Property Name="estadoClima" Type="varchar" MaxLength="50" />
+    <Property Name="codPostal_HistoClim" Type="int" />
+  </EntityType>
+  <EntityType Name="ITINERARIOS">
+    <Key>
+      <PropertyRef Name="idItinerario" />
+    </Key>
+    <Property Name="idItinerario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreItinerario" Type="varchar" MaxLength="50" />
+    <Property Name="descripcionItinerario" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDTursAgr.dbo.ITINERARIOS_ATRACCIONES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ITINERARIOS_ATRACCIONES">
+    <Key>
+      <PropertyRef Name="idItinerario_idAtraccion" />
+      <PropertyRef Name="idAtraccion_idItinerario" />
+    </Key>
+    <Property Name="idItinerario_idAtraccion" Type="int" Nullable="false" />
+    <Property Name="idAtraccion_idItinerario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PUBLICACIONES">
+    <Key>
+      <PropertyRef Name="idPublicacion" />
+    </Key>
+    <Property Name="idPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaPublicacion" Type="date" />
+    <Property Name="texto" Type="text" />
+    <Property Name="idUserPublicacion" Type="int" />
+    <Property Name="idTema_publicacion" Type="int" />
+  </EntityType>
+  <EntityType Name="TEMAS_DE_FORO">
+    <Key>
+      <PropertyRef Name="idTema" />
+    </Key>
+    <Property Name="idTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreDeTema" Type="varchar" MaxLength="50" />
+    <Property Name="idUserForo" Type="int" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urlFotoUsuario" Type="varchar" MaxLength="100" />
+    <Property Name="nombreUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="telefono" Type="bigint" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="contrasenia" Type="varchar" MaxLength="50" />
+    <Property Name="rolAdmin" Type="bit" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDTursAgr.dbo.USUARIOS_CIUDADES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="USUARIOS_CIUDADES">
+    <Key>
+      <PropertyRef Name="idUsuario_codPostal" />
+      <PropertyRef Name="codPostal_idUsuario" />
+    </Key>
+    <Property Name="idUsuario_codPostal" Type="int" Nullable="false" />
+    <Property Name="codPostal_idUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_cut">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="TEMAS_DE_FORO" Type="Self.TEMAS_DE_FORO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TEMAS_DE_FORO">
+        <PropertyRef Name="idUserForo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fAtraIti">
+    <End Role="ATRACCIONES" Type="Self.ATRACCIONES" Multiplicity="1" />
+    <End Role="ITINERARIOS_ATRACCIONES" Type="Self.ITINERARIOS_ATRACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ATRACCIONES">
+        <PropertyRef Name="idAtraccion" />
+      </Principal>
+      <Dependent Role="ITINERARIOS_ATRACCIONES">
+        <PropertyRef Name="idAtraccion_idItinerario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fcodp_hclim">
+    <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="0..1" />
+    <End Role="HISTORIAL_CLIMATICO" Type="Self.HISTORIAL_CLIMATICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDADES">
+        <PropertyRef Name="codPostal" />
+      </Principal>
+      <Dependent Role="HISTORIAL_CLIMATICO">
+        <PropertyRef Name="codPostal_HistoClim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fdpto_c">
+    <End Role="DEPARTAMENTOS" Type="Self.DEPARTAMENTOS" Multiplicity="0..1" />
+    <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTOS">
+        <PropertyRef Name="idDepartamento" />
+      </Principal>
+      <Dependent Role="CIUDADES">
+        <PropertyRef Name="idDepartamento_ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fid_User">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="PUBLICACIONES" Type="Self.PUBLICACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="PUBLICACIONES">
+        <PropertyRef Name="idUserPublicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fItiAtra">
+    <End Role="ITINERARIOS" Type="Self.ITINERARIOS" Multiplicity="1" />
+    <End Role="ITINERARIOS_ATRACCIONES" Type="Self.ITINERARIOS_ATRACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITINERARIOS">
+        <PropertyRef Name="idItinerario" />
+      </Principal>
+      <Dependent Role="ITINERARIOS_ATRACCIONES">
+        <PropertyRef Name="idItinerario_idAtraccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fpostal_atracc">
+    <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="0..1" />
+    <End Role="ATRACCIONES" Type="Self.ATRACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDADES">
+        <PropertyRef Name="codPostal" />
+      </Principal>
+      <Dependent Role="ATRACCIONES">
+        <PropertyRef Name="codPostal_Atraccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fPosUsu">
+    <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="1" />
+    <End Role="USUARIOS_CIUDADES" Type="Self.USUARIOS_CIUDADES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDADES">
+        <PropertyRef Name="codPostal" />
+      </Principal>
+      <Dependent Role="USUARIOS_CIUDADES">
+        <PropertyRef Name="codPostal_idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ftema_publi">
+    <End Role="TEMAS_DE_FORO" Type="Self.TEMAS_DE_FORO" Multiplicity="0..1" />
+    <End Role="PUBLICACIONES" Type="Self.PUBLICACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEMAS_DE_FORO">
+        <PropertyRef Name="idTema" />
+      </Principal>
+      <Dependent Role="PUBLICACIONES">
+        <PropertyRef Name="idTema_publicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fUsuChat">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="CHATS" Type="Self.CHATS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="CHATS">
+        <PropertyRef Name="idUsuario_Chat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fUsuPos">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOS_CIUDADES" Type="Self.USUARIOS_CIUDADES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="USUARIOS_CIUDADES">
+        <PropertyRef Name="idUsuario_codPostal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDTursArgModelStoreContainer">
+    <EntitySet Name="ATRACCIONES" EntityType="Self.ATRACCIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHATS" EntityType="Self.CHATS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTAMENTOS" EntityType="Self.DEPARTAMENTOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HISTORIAL_CLIMATICO" EntityType="Self.HISTORIAL_CLIMATICO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITINERARIOS" EntityType="Self.ITINERARIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PUBLICACIONES" EntityType="Self.PUBLICACIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TEMAS_DE_FORO" EntityType="Self.TEMAS_DE_FORO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITINERARIOS_ATRACCIONES" EntityType="Self.ITINERARIOS_ATRACCIONES" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ITINERARIOS_ATRACCIONES].[idItinerario_idAtraccion] AS [idItinerario_idAtraccion], 
+    [ITINERARIOS_ATRACCIONES].[idAtraccion_idItinerario] AS [idAtraccion_idItinerario]
+    FROM [dbo].[ITINERARIOS_ATRACCIONES] AS [ITINERARIOS_ATRACCIONES]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USUARIOS_CIUDADES" EntityType="Self.USUARIOS_CIUDADES" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USUARIOS_CIUDADES].[idUsuario_codPostal] AS [idUsuario_codPostal], 
+    [USUARIOS_CIUDADES].[codPostal_idUsuario] AS [codPostal_idUsuario]
+    FROM [dbo].[USUARIOS_CIUDADES] AS [USUARIOS_CIUDADES]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_cut" Association="Self.fk_cut">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fAtraIti" Association="Self.fk_fAtraIti">
+      <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
+      <End Role="ITINERARIOS_ATRACCIONES" EntitySet="ITINERARIOS_ATRACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fcodp_hclim" Association="Self.fk_fcodp_hclim">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="HISTORIAL_CLIMATICO" EntitySet="HISTORIAL_CLIMATICO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fdpto_c" Association="Self.fk_fdpto_c">
+      <End Role="DEPARTAMENTOS" EntitySet="DEPARTAMENTOS" />
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fid_User" Association="Self.fk_fid_User">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fItiAtra" Association="Self.fk_fItiAtra">
+      <End Role="ITINERARIOS" EntitySet="ITINERARIOS" />
+      <End Role="ITINERARIOS_ATRACCIONES" EntitySet="ITINERARIOS_ATRACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fpostal_atracc" Association="Self.fk_fpostal_atracc">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fPosUsu" Association="Self.fk_fPosUsu">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="USUARIOS_CIUDADES" EntitySet="USUARIOS_CIUDADES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ftema_publi" Association="Self.fk_ftema_publi">
+      <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
+      <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fUsuChat" Association="Self.fk_fUsuChat">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CHATS" EntitySet="CHATS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fUsuPos" Association="Self.fk_fUsuPos">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOS_CIUDADES" EntitySet="USUARIOS_CIUDADES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

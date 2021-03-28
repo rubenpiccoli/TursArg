@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDTursArgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urlFotoUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="Int64" />
+    <Property Name="contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rolAdmin" Type="Boolean" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CHATS" Relationship="BDTursArgModel.fk_fUsuChat" FromRole="USUARIOS" ToRole="CHATS" />
+    <NavigationProperty Name="PUBLICACIONES" Relationship="BDTursArgModel.fk_fid_User" FromRole="USUARIOS" ToRole="PUBLICACIONES" />
+    <NavigationProperty Name="TEMAS_DE_FORO" Relationship="BDTursArgModel.fk_cut" FromRole="USUARIOS" ToRole="TEMAS_DE_FORO" />
+    <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.USUARIOS_CIUDADES" FromRole="USUARIOS" ToRole="CIUDADES" />
+  </EntityType>
+  <EntityContainer Name="BDTursArgEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <EntitySet Name="ATRACCIONES" EntityType="BDTursArgModel.ATRACCIONES" />
+    <EntitySet Name="CHATS" EntityType="BDTursArgModel.CHATS" />
+    <EntitySet Name="CIUDADES" EntityType="BDTursArgModel.CIUDADES" />
+    <EntitySet Name="DEPARTAMENTOS" EntityType="BDTursArgModel.DEPARTAMENTOS" />
+    <EntitySet Name="HISTORIAL_CLIMATICO" EntityType="BDTursArgModel.HISTORIAL_CLIMATICO" />
+    <EntitySet Name="ITINERARIOS" EntityType="BDTursArgModel.ITINERARIOS" />
+    <EntitySet Name="PUBLICACIONES" EntityType="BDTursArgModel.PUBLICACIONES" />
+    <EntitySet Name="TEMAS_DE_FORO" EntityType="BDTursArgModel.TEMAS_DE_FORO" />
+    <AssociationSet Name="fk_fpostal_atracc" Association="BDTursArgModel.fk_fpostal_atracc">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fUsuChat" Association="BDTursArgModel.fk_fUsuChat">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CHATS" EntitySet="CHATS" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fcodp_hclim" Association="BDTursArgModel.fk_fcodp_hclim">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="HISTORIAL_CLIMATICO" EntitySet="HISTORIAL_CLIMATICO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fdpto_c" Association="BDTursArgModel.fk_fdpto_c">
+      <End Role="DEPARTAMENTOS" EntitySet="DEPARTAMENTOS" />
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_fid_User" Association="BDTursArgModel.fk_fid_User">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ftema_publi" Association="BDTursArgModel.fk_ftema_publi">
+      <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
+      <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cut" Association="BDTursArgModel.fk_cut">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
+    </AssociationSet>
+    <AssociationSet Name="ITINERARIOS_ATRACCIONES" Association="BDTursArgModel.ITINERARIOS_ATRACCIONES">
+      <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
+      <End Role="ITINERARIOS" EntitySet="ITINERARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIOS_CIUDADES" Association="BDTursArgModel.USUARIOS_CIUDADES">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ATRACCIONES">
+    <Key>
+      <PropertyRef Name="idAtraccion" />
+    </Key>
+    <Property Name="idAtraccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccionAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcionAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="horarioAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tarifaAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="serviciosAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="urlUbicacionAtraccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoAtraccion1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoAtraccion2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoAtraccion3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="codPostal_Atraccion" Type="Int32" />
+    <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.fk_fpostal_atracc" FromRole="ATRACCIONES" ToRole="CIUDADES" />
+    <NavigationProperty Name="ITINERARIOS" Relationship="BDTursArgModel.ITINERARIOS_ATRACCIONES" FromRole="ATRACCIONES" ToRole="ITINERARIOS" />
+  </EntityType>
+  <EntityType Name="CHATS">
+    <Key>
+      <PropertyRef Name="idChat" />
+    </Key>
+    <Property Name="idChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaChat" Type="DateTime" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="consulta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idUsuario_Chat" Type="Int32" />
+    <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.fk_fUsuChat" FromRole="CHATS" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="CIUDADES">
+    <Key>
+      <PropertyRef Name="codPostal" />
+    </Key>
+    <Property Name="codPostal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombreCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="urlUbicacionCiudad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoCiudad1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoCiudad2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="urlfotoCiudad3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="idDepartamento_ciudad" Type="Int32" />
+    <NavigationProperty Name="ATRACCIONES" Relationship="BDTursArgModel.fk_fpostal_atracc" FromRole="CIUDADES" ToRole="ATRACCIONES" />
+    <NavigationProperty Name="HISTORIAL_CLIMATICO" Relationship="BDTursArgModel.fk_fcodp_hclim" FromRole="CIUDADES" ToRole="HISTORIAL_CLIMATICO" />
+    <NavigationProperty Name="DEPARTAMENTOS" Relationship="BDTursArgModel.fk_fdpto_c" FromRole="CIUDADES" ToRole="DEPARTAMENTOS" />
+    <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.USUARIOS_CIUDADES" FromRole="CIUDADES" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="DEPARTAMENTOS">
+    <Key>
+      <PropertyRef Name="idDepartamento" />
+    </Key>
+    <Property Name="idDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.fk_fdpto_c" FromRole="DEPARTAMENTOS" ToRole="CIUDADES" />
+  </EntityType>
+  <EntityType Name="HISTORIAL_CLIMATICO">
+    <Key>
+      <PropertyRef Name="idClima" />
+    </Key>
+    <Property Name="idClima" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaClima" Type="DateTime" Precision="0" />
+    <Property Name="tempMin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tempMax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estadoClima" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="codPostal_HistoClim" Type="Int32" />
+    <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.fk_fcodp_hclim" FromRole="HISTORIAL_CLIMATICO" ToRole="CIUDADES" />
+  </EntityType>
+  <EntityType Name="ITINERARIOS">
+    <Key>
+      <PropertyRef Name="idItinerario" />
+    </Key>
+    <Property Name="idItinerario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreItinerario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcionItinerario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ATRACCIONES" Relationship="BDTursArgModel.ITINERARIOS_ATRACCIONES" FromRole="ITINERARIOS" ToRole="ATRACCIONES" />
+  </EntityType>
+  <EntityType Name="PUBLICACIONES">
+    <Key>
+      <PropertyRef Name="idPublicacion" />
+    </Key>
+    <Property Name="idPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaPublicacion" Type="DateTime" Precision="0" />
+    <Property Name="texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idUserPublicacion" Type="Int32" />
+    <Property Name="idTema_publicacion" Type="Int32" />
+    <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.fk_fid_User" FromRole="PUBLICACIONES" ToRole="USUARIOS" />
+    <NavigationProperty Name="TEMAS_DE_FORO" Relationship="BDTursArgModel.fk_ftema_publi" FromRole="PUBLICACIONES" ToRole="TEMAS_DE_FORO" />
+  </EntityType>
+  <EntityType Name="TEMAS_DE_FORO">
+    <Key>
+      <PropertyRef Name="idTema" />
+    </Key>
+    <Property Name="idTema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreDeTema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idUserForo" Type="Int32" />
+    <NavigationProperty Name="PUBLICACIONES" Relationship="BDTursArgModel.fk_ftema_publi" FromRole="TEMAS_DE_FORO" ToRole="PUBLICACIONES" />
+    <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.fk_cut" FromRole="TEMAS_DE_FORO" ToRole="USUARIOS" />
+  </EntityType>
+  <Association Name="fk_fpostal_atracc">
+    <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.ATRACCIONES" Role="ATRACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDADES">
+        <PropertyRef Name="codPostal" />
+      </Principal>
+      <Dependent Role="ATRACCIONES">
+        <PropertyRef Name="codPostal_Atraccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fUsuChat">
+    <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.CHATS" Role="CHATS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="CHATS">
+        <PropertyRef Name="idUsuario_Chat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fcodp_hclim">
+    <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.HISTORIAL_CLIMATICO" Role="HISTORIAL_CLIMATICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDADES">
+        <PropertyRef Name="codPostal" />
+      </Principal>
+      <Dependent Role="HISTORIAL_CLIMATICO">
+        <PropertyRef Name="codPostal_HistoClim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fdpto_c">
+    <End Type="BDTursArgModel.DEPARTAMENTOS" Role="DEPARTAMENTOS" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTAMENTOS">
+        <PropertyRef Name="idDepartamento" />
+      </Principal>
+      <Dependent Role="CIUDADES">
+        <PropertyRef Name="idDepartamento_ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_fid_User">
+    <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.PUBLICACIONES" Role="PUBLICACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="PUBLICACIONES">
+        <PropertyRef Name="idUserPublicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ftema_publi">
+    <End Type="BDTursArgModel.TEMAS_DE_FORO" Role="TEMAS_DE_FORO" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.PUBLICACIONES" Role="PUBLICACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEMAS_DE_FORO">
+        <PropertyRef Name="idTema" />
+      </Principal>
+      <Dependent Role="PUBLICACIONES">
+        <PropertyRef Name="idTema_publicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cut">
+    <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="0..1" />
+    <End Type="BDTursArgModel.TEMAS_DE_FORO" Role="TEMAS_DE_FORO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="TEMAS_DE_FORO">
+        <PropertyRef Name="idUserForo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ITINERARIOS_ATRACCIONES">
+    <End Type="BDTursArgModel.ATRACCIONES" Role="ATRACCIONES" Multiplicity="*" />
+    <End Type="BDTursArgModel.ITINERARIOS" Role="ITINERARIOS" Multiplicity="*" />
+  </Association>
+  <Association Name="USUARIOS_CIUDADES">
+    <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="*" />
+    <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="*" />
+  </Association>
+</Schema>

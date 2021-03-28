@@ -1,5 +1,7 @@
-create BDTursAgr
+
+create BDTursArg
 use BDTursAgr
+
 
 -- tabla USUARIOS ACTOR
 create table USUARIOS(
@@ -9,7 +11,7 @@ nombreUsuario varchar(50),
 nombre varchar(50),
 apellido varchar(50),
 telefono bigint,
-email varchar(100),
+mail varchar(100),
 contrasenia varchar(50),
 rolAdmin bit,
 constraint pk_cu primary key(idUsuario),

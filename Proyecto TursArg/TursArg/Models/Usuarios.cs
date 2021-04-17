@@ -32,6 +32,7 @@ namespace TursArg.Models
         public string contrasenia { get; set; }
         public Nullable<bool> rolAdmin { get; set; }
         public string email { get; set; }
+        public string Token { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHATS> CHATS { get; set; }

@@ -25,7 +25,6 @@ namespace TursArg.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<USUARIOS> USUARIOS { get; set; }
         public virtual DbSet<ATRACCIONES> ATRACCIONES { get; set; }
         public virtual DbSet<CHATS> CHATS { get; set; }
         public virtual DbSet<CIUDADES> CIUDADES { get; set; }
@@ -34,5 +33,6 @@ namespace TursArg.Models
         public virtual DbSet<ITINERARIOS> ITINERARIOS { get; set; }
         public virtual DbSet<PUBLICACIONES> PUBLICACIONES { get; set; }
         public virtual DbSet<TEMAS_DE_FORO> TEMAS_DE_FORO { get; set; }
+        public virtual DbSet<USUARIOS> USUARIOS { get; set; }
     }
 }

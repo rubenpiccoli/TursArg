@@ -264,6 +264,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\USUARIOS1Controller.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -306,6 +307,8 @@
     <Compile Include="Models\PUBLICACIONES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Respuesta\Respuesta.cs" />
+    <Compile Include="Models\Respuesta\Seguridad.cs" />
     <Compile Include="Models\TEMAS_DE_FORO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -328,6 +331,7 @@
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\Model1.edmx.sql" />
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

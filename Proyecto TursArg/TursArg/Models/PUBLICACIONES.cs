@@ -20,7 +20,7 @@ namespace TursArg.Models
         public Nullable<int> idUserPublicacion { get; set; }
         public Nullable<int> idTema_publicacion { get; set; }
     
-        public virtual USUARIOS USUARIOS { get; set; }
         public virtual TEMAS_DE_FORO TEMAS_DE_FORO { get; set; }
+        public virtual USUARIOS USUARIOS { get; set; }
     }
 }

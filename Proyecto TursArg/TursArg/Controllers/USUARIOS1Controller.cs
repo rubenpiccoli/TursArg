@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TursArg.Models;
+using TursArg.Models.Respuesta;
 
 namespace TursArg.Controllers
 {
@@ -20,6 +21,51 @@ namespace TursArg.Controllers
         public IQueryable<USUARIOS> GetUSUARIOS()
         {
             return db.USUARIOS;
+        }
+
+        [HttpGet]
+        [Route ("api/USUARIOS1/Saludar")]
+        public Respuesta Saludar()
+        {
+            Respuesta oRespuesta = new Respuesta();
+            oRespuesta.Mensaje = "Hola Mundo";
+            oRespuesta.Resultado = 1;
+
+            return (oRespuesta);
+        }
+
+        [HttpPost]
+        [Route("api/USUARIOS1/Login")]
+        public Respuesta Login(USUARIOS oLogin)
+        {
+            Respuesta oRespuesta = new Respuesta();
+
+            
+
+            using (BDTursArgEntities db = new BDTursArgEntities()) 
+            {
+                var lista = db.USUARIOS.Where(a => a.email == oLogin.email && a.contrasenia == oLogin.contrasenia).ToList();
+
+                if (lista.Count() > 0) 
+                {
+                    oRespuesta.Resultado = 1;
+                    oRespuesta.Mensaje = "login correcto";
+                    ///// genera el Token ////
+                    oRespuesta.Datos = Guid.NewGuid().ToString();
+
+                    USUARIOS uSUARIOS = lista.FirstOrDefault();
+                    uSUARIOS.Token = oRespuesta.Datos.ToString();
+                    ///graba la modifcacion(confirma)///
+                    db.Entry(uSUARIOS).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                } else
+                {
+                    oRespuesta.Mensaje = "login Incorrecto";
+                    oRespuesta.Resultado = 0;
+                }
+            }
+            
+            return (oRespuesta);
         }
 
         // GET: api/USUARIOS1/5

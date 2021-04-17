@@ -16,9 +16,10 @@ import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { ItinerariosComponent } from './components/itinerarios/itinerarios.component';
 import { AtraccionesComponent } from './components/atracciones/atracciones.component';
 import { UsuariosService } from './services/usuarios.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -40,10 +41,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     NgbModule
   ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

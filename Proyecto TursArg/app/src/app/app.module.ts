@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CookieService} from 'ngx-cookie-service';
+import { ModificacionusuariosComponent } from './components/modificacionusuarios/modificacionusuarios.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {CookieService} from 'ngx-cookie-service';
     ItinerariosComponent,
     AtraccionesComponent,
     UsuariosComponent,
+    ModificacionusuariosComponent,
 
   ],
   imports: [

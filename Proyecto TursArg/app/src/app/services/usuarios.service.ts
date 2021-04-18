@@ -5,11 +5,12 @@ import { usermodifica } from '../models/usermodifica.interface';
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-
+  Token:string;
   formData: Usuarios;
 
   readonly rootURL = 'https://localhost:44332/api'
@@ -22,15 +23,15 @@ export class UsuariosService {
     return this.http.post(this.rootURL + '/USUARIOS1', formData);
   }
 /////////Selecciona el usuario para mostrar en el modal por el idUsuario//////
-selecionarUsuario(idUsuario:number):Observable<usermodifica>{
+selecionarUsuario(Token:string):Observable<usermodifica>{
     
-  return this.http.get<usermodifica>(this.rootURL + '/USUARIOS1?id='+idUsuario)
+  return this.http.get<usermodifica>(this.rootURL + '/USUARIOS1?Token='+Token)
  }
  
  ///////////confirma modificaciones///////
- putUpdate(formData:Usuarios){
-   
-   return this.http.put(this.rootURL + '/USUARIOS1?id=36', formData)
+ putUpdate(id:number, formData:Usuarios){
+ 
+   return this.http.put(this.rootURL + '/USUARIOS1?id='+id,formData)
  }
 
 }

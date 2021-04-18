@@ -107,7 +107,7 @@
     <Property Name="contrasenia" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="rolAdmin" Type="bit" />
     <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Token" Type="varchar" MaxLength="100" />
+    <Property Name="Token" Type="varchar" MaxLength="100" StoreGeneratedPattern="None" />
   </EntityType>
   <EntityType Name="USUARIOS_CIUDADES">
     <Key>

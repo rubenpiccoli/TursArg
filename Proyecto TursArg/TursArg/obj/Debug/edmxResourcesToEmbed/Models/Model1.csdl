@@ -212,7 +212,7 @@
     <Property Name="contrasenia" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="rolAdmin" Type="Boolean" />
     <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="None" />
     <NavigationProperty Name="CHATS" Relationship="BDTursArgModel.fk_fUsuChat" FromRole="USUARIOS" ToRole="CHATS" />
     <NavigationProperty Name="PUBLICACIONES" Relationship="BDTursArgModel.fk_fid_User" FromRole="USUARIOS" ToRole="PUBLICACIONES" />
     <NavigationProperty Name="TEMAS_DE_FORO" Relationship="BDTursArgModel.fk_cut" FromRole="USUARIOS" ToRole="TEMAS_DE_FORO" />

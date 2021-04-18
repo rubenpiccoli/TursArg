@@ -41,7 +41,7 @@ CREATE TABLE [dbo].[USUARIOS] (
     [contrasenia] varchar(150)  NOT NULL,
     [rolAdmin] bit  NULL,
     [email] varchar(100)  NULL,
-    [mail] varchar(100)  NULL
+    [Token] varchar(100)  NULL
 );
 GO
 

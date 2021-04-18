@@ -28,7 +28,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
    
    }
+   cerrarsession(){
+    this.cookieToken.delete('Token')
+    this.router.navigate(['/']);
   
+  }
 
   onSubmit(){
     if (this.formLogin.invalid){
@@ -39,8 +43,9 @@ export class LoginComponent implements OnInit {
       .login(this.formLogin.value)
       .subscribe(data => { console.log('loginnnn',data);
      if (data.Resultado==1){
-       this.token=data.Datos
+       
        /// guardo el Token en la Cookie ///
+       this.token=data.Datos
        this.cookieToken.set('Token', this.token);
        this.token=this.cookieToken.get('Token');
        console.log('Tokenn', this.token)
@@ -48,7 +53,7 @@ export class LoginComponent implements OnInit {
       
        
        
-       this.router.navigate(['']);
+       this.router.navigate(['/']);
     }else{
        swal.fire('Error Login', 'Verifique Datos', 'error');
       

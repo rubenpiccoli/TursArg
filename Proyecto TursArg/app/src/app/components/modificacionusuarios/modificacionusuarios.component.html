@@ -27,8 +27,8 @@
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Email:</label>
-                        <input type="text" class="form-control" id="recipient-name" formControlName="mail">
-                        <span class="form-text text-danger" *ngIf="CampoValido('mail')">Dato requerido</span>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="email">
+                        <span class="form-text text-danger" *ngIf="CampoValido('email')">Dato requerido</span>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Contraseña</label>
@@ -47,7 +47,7 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="AddExpense" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Modificar</button>
                     </div>
 

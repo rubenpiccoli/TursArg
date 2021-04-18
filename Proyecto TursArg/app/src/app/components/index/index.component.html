@@ -25,7 +25,7 @@
                     <br>
                     <h1><b>TURISMO ENTRERRIANO</b></h1>
                 </div>
-                <div class="col-sm-2">
+                <div *ngIf="!Perfil" class="col-sm-2">
                     <br>
                     <a routerLink="/registerUser"><button type="button" class="btn btn-secondary btn-sm"
                             style="font-weight: 550;">Registarse</button></a><br><br>
@@ -33,7 +33,15 @@
                             style="font-weight: 550;">Ingresar</button></a>
 
                 </div>
-
+                <div *ngIf="Perfil" class="col-sm-2 mt-3">
+                    <div>
+                        <img src="/Bundles/assets/imagenes/sinfoto.jpg" class="img-fluid rounded-circle img-thumbnail" alt="foto de perfil" width="80px">
+                    </div>
+                    <app-modificacionusuarios></app-modificacionusuarios>
+                    <div>
+                        <a href="" id="cerrarsession" (click)="Cerrarsession()">Cerrar Session</a>
+                    </div>
+                </div>
             </div>
 
             <router-outlet></router-outlet>

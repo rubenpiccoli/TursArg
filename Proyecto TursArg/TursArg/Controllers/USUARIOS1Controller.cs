@@ -16,6 +16,7 @@ namespace TursArg.Controllers
     public class USUARIOS1Controller : ApiController
     {
         private BDTursArgEntities db = new BDTursArgEntities();
+        private int id;
 
         // GET: api/USUARIOS1
         public IQueryable<USUARIOS> GetUSUARIOS()
@@ -55,7 +56,7 @@ namespace TursArg.Controllers
 
                     USUARIOS uSUARIOS = lista.FirstOrDefault();
                     uSUARIOS.Token = oRespuesta.Datos.ToString();
-                    ///graba la modifcacion(confirma)///
+                    ///graba la modifcacion(confirma) el Token///
                     db.Entry(uSUARIOS).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 } else
@@ -80,11 +81,27 @@ namespace TursArg.Controllers
 
             return Ok(uSUARIOS);
         }
+        // GET: api/USUARIOS1/5
+        [ResponseType(typeof(USUARIOS))]
+        public IHttpActionResult GetUSUARIOS(string Token)
+        {
+
+            var uSUARIOS = db.USUARIOS.Where(a => a.Token == Token);
+           
+                
+            if (uSUARIOS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(uSUARIOS);
+        }
 
         // PUT: api/USUARIOS1/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUSUARIOS(int id, USUARIOS uSUARIOS)
         {
+                      
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

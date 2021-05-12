@@ -25,14 +25,10 @@ namespace TursArg.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ATRACCIONES> ATRACCIONES { get; set; }
-        public virtual DbSet<CHATS> CHATS { get; set; }
         public virtual DbSet<CIUDADES> CIUDADES { get; set; }
-        public virtual DbSet<DEPARTAMENTOS> DEPARTAMENTOS { get; set; }
-        public virtual DbSet<HISTORIAL_CLIMATICO> HISTORIAL_CLIMATICO { get; set; }
-        public virtual DbSet<ITINERARIOS> ITINERARIOS { get; set; }
-        public virtual DbSet<PUBLICACIONES> PUBLICACIONES { get; set; }
         public virtual DbSet<TEMAS_DE_FORO> TEMAS_DE_FORO { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<CONSULTAS_VIAEMAIL> CONSULTAS_VIAEMAIL { get; set; }
+        public virtual DbSet<PUBLICACIONES> PUBLICACIONES { get; set; }
     }
 }

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Registrarse en TursArg</title>
     <link rel="stylesheet" href="register.component.css">
@@ -34,12 +33,9 @@
                                 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
                                     <div class="form-label-group">
                                         <h6>Nombre</h6>
-                                        <input name="nombre" #nombre="ngModel" [(ngModel)]="service.formData.nombre"
-                                            style="padding-left: 1rem;" type="text" id="" class="form-control" required
-                                            autofocus>
+                                        <input name="nombre" #nombre="ngModel" [(ngModel)]="service.formData.nombre" style="padding-left: 1rem;" type="text" id="" class="form-control" required autofocus>
 
-                                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
-                                            class="alert alert-danger">
+                                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
                                             <div *ngIf="nombre.invalid">
                                                 Introduzca un nombre
                                             </div>
@@ -49,12 +45,9 @@
                                     </div>
                                     <div class="form-label-group">
                                         <h6>Apellido</h6>
-                                        <input name="apellido" #apellido="ngModel"
-                                            [(ngModel)]="service.formData.apellido" style="padding-left: 1rem;"
-                                            type="text" id="" class="form-control" required autofocus>
+                                        <input name="apellido" #apellido="ngModel" [(ngModel)]="service.formData.apellido" style="padding-left: 1rem;" type="text" id="" class="form-control" required autofocus>
 
-                                        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
-                                            class="alert alert-danger">
+                                        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger">
                                             <div *ngIf="apellido.invalid">
                                                 Introduzca un apellido
                                             </div>
@@ -64,12 +57,9 @@
                                     </div>
                                     <div class="form-label-group">
                                         <h6>Nombre de Usuario</h6>
-                                        <input name="nombreUsuario" #nombreUsuario="ngModel"
-                                            [(ngModel)]="service.formData.nombreUsuario" type="text"
-                                            style="padding-left: 1rem;" id="" class="form-control" required autofocus>
+                                        <input name="nombreUsuario" #nombreUsuario="ngModel" [(ngModel)]="service.formData.nombreUsuario" type="text" style="padding-left: 1rem;" id="" class="form-control" required autofocus>
 
-                                        <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)"
-                                            class="alert alert-danger">
+                                        <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)" class="alert alert-danger">
                                             <div *ngIf="nombreUsuario.invalid">
                                                 Introduzca un nombre de usuario
                                             </div>
@@ -78,15 +68,16 @@
                                     </div>
                                     <div class="form-label-group">
                                         <h6>Email</h6>
-                                        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$" name="email"
-                                            #email="ngModel" [(ngModel)]="service.formData.email" type="email"
-                                            style="padding-left: 1rem;" id="inputEmail" class="form-control" required
-                                            autofocus>
-
-                                        <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                                            class="alert alert-danger">
+                                        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$" name="email" #email="ngModel" [(ngModel)]="service.formData.email" Email EmailUnico type="email" style="padding-left: 1rem;" id="inputEmail" class="form-control" required autofocus>
+                                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                                             <div *ngIf="email.invalid">
                                                 Introduzca un email
+                                            </div>
+                                            <div *ngIf="email.errors.EmailUnico">
+                                                El correo electrónico ya existe!!
+                                            </div>
+                                            <div *ngIf="email.errors?.Email">
+                                                El E-mail es invalido "example@gmail.com"
                                             </div>
 
                                         </div>
@@ -95,12 +86,9 @@
 
                                     <div class="form-label-group">
                                         <h6>Contraseña</h6>
-                                        <input name="contrasenia" #contrasenia="ngModel" required minlength="6"
-                                            [(ngModel)]="service.formData.contrasenia" style="padding-left: 1rem;"
-                                            type="password" id="inputPassword" class="form-control">
+                                        <input name="contrasenia" #contrasenia="ngModel" required minlength="6" [(ngModel)]="service.formData.contrasenia" style="padding-left: 1rem;" type="password" id="inputPassword" class="form-control">
 
-                                        <div *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)"
-                                            class="alert alert-danger">
+                                        <div *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)" class="alert alert-danger">
                                             <div *ngIf="contrasenia.invalid">
                                                 La contraseña es obligatoria
                                             </div>
@@ -112,24 +100,32 @@
 
                                         <label for="inputPassword"></label>
                                     </div>
-
-                                    <div class="alerta-registro" role="alert">
+                                    <div class="form-label-group">
+                                        <h6>
+                                            <input type="checkbox" name="condiciones" required> Acepta los
+                                            <a href="" target="_blank ">Términos y Condiciones </a>
+                                        </h6>
 
                                     </div>
 
-                                    <button style="font-weight: 700;" [disabled]="form.invalid"
-                                        class="btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2" type="submit"
-                                        id="btnRegister">Registrarse</button>
 
-                                    <div class="text-center py-2">
-                                        <a routerLink="/login" href="">¿Tienes
+
+
+                                    <div class="alerta-registro " role="alert ">
+
+                                    </div>
+
+                                    <button style="font-weight: 700; " [disabled]="form.invalid " class="btn btn-lg btn-primary btn-block btn-login mb-2 pb-2 " type="submit " id="btnRegister ">Registrarse</button>
+
+                                    <div class="text-center py-2 ">
+                                        <a routerLink="/login" href=" ">¿Tienes
                                             cuenta? Inicia
                                             Sesion</a>
                                         <br>
                                     </div>
 
-                                    <div class="text-center pb-2">
-                                        <a routerLink="/index" href="">Pagina
+                                    <div class="text-center pb-2 ">
+                                        <a routerLink="/index" href=" ">Pagina
                                             Principal</a>
                                     </div>
 
@@ -141,16 +137,10 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10 "></script>
 
 </body>
 

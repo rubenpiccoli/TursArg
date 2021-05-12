@@ -1,39 +1,53 @@
-<div class="abs-center gradient-navbar" style="height: 80px;">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand mb-1 " href="#"><img src="https://i.ibb.co/PDFkXFP/Logo-Turs-Arg-cono.png" class="img-fluid" alt="Logo de la pagina"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav" style="font-weight: 550;">
-                <li class="nav-item active">
-                    <a routerLink="/index" class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/Ciudades" class="nav-link" href="">Ciudades</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/Atracciones" class="nav-link" href="">Atracciones</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/Itinerarios" class="nav-link" href="">Itinerarios</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/Foro" class="nav-link" href="">Foro</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/Chat" class="nav-link" href="">Chat</a>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light abs-center gradient-navbar">
 
-        <div class="col-sm-2 mt-3">
+    <a class="navbar-brand mb-1 abs-center" href="#"><img src="https://i.ibb.co/PDFkXFP/Logo-Turs-Arg-cono.png" class="img-fluid" alt="Logo de la pagina"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center abs-center" id="navbarNav">
+        <ul class="navbar-nav" style="font-weight: 550;">
+            <li class="nav-item active">
+                <a style="color: white;" routerLink="/index" routerLinkActive='Active' class="nav-link" href="#">Inicio<span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white;" routerLink="/enConstruccion" routerLinkActive='Active' class="nav-link" href="">Ciudades</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white;" routerLink="/Atracciones" routerLinkActive='Active' class="nav-link" href="">Atracciones</a>
+            </li>
+            <!--<li class="nav-item">
+                <a style="color: white;" routerLink="/enConstruccion" routerLinkActive='Active' class="nav-link" href="">Chat</a>
+            </li>-->
+            <li class="nav-item">
+                <a style="color: white;" routerLink="/Foro" routerLinkActive='Active' class="nav-link" href="">Foro</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white;" routerLink="/Contacto" routerLinkActive='Active' class="nav-link" href="">Contacto</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="!Perfil" class="col-sm-2 mt-3">
+        <div>
+            <br>
             <a routerLink="/registerUser" href="#"><button type="button"
-                    class="btn btn-secondary btn-sm mb-2">Registarse</button></a>
-            <a routerLink="/login" href="#"><button type="button"
-                    class="btn btn-secondary btn-sm mb-3">Ingresar</button></a>
+                    class="btn btn-primary btn-sm mb-2">Registarse</button></a>
         </div>
+        <div>
+            <a routerLink="/login" href="#"><button type="button"
+                    class="btn btn-primary btn-sm mb-3">Ingresar</button></a>
+        </div>
+    </div>
+    <div style="padding-left: 6rem;" *ngIf="Perfil" class="col-sm-2">
+        <div>
+            <img src="https://i.ibb.co/KFyZjzf/ic-perfil.png" class="img-fluid rounded-circle img-thumbnail" alt="foto de perfil" width="60px" height="40px" style="margin-left: 0.5rem; margin-bottom: 0.3rem; ">
+        </div>
+        <div style="padding-left: 0.5rem;">
+            <app-modificacionusuarios></app-modificacionusuarios>
+        </div>
+        <div>
+            <a style="text-decoration: none; color: white;" href="" id="cerrarsession" (click)="Cerrarsession()">Cerrar
+                Sesión</a>
+        </div>
+    </div>
 
-    </nav>
-
-</div>
+</nav>

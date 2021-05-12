@@ -37,14 +37,14 @@ export class RegisterComponent implements OnInit {
   onSubmit(form: NgForm) {
 
     this.insertRecord(form);
-    swal.fire('Enhorabuena', 'Usuario registrado exitosamente', 'success');
+
 
     // alert("Felicidades, has sido registrad@");
   }
 
   insertRecord(form: NgForm) {
     this.service.postUsuario(form.value).subscribe(res => {
-
+      swal.fire('Enhorabuena', 'Usuario registrado exitosamente', 'success');
       this.resetForm(form);
 
     });

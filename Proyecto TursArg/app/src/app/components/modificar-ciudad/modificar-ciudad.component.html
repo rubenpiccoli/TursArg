@@ -1,0 +1,64 @@
+<!--<button type="button" id="ciudadModal" class="btn btn-primary" data-toggle="modal" data-target="#ciudadModal" data-whatever="@mdo" (click)="1">Modificar</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>-->
+
+<div class="modal fade" id="ciudadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Menu Ciudad </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #formCiudad="ngForm" (submit)="onSubmit(formCiudad)" autocomplete="off">
+
+                    <input type="hidden" class="form-control" #idCiudad="ngModel" name="idCiudad" [(ngModel)]="service.formData.idCiudad">
+                    <div class="form-group">
+                        <label for="codPost" class="col-form-label">Codigo Postal:</label>
+                        <input type="number" class="form-control" #codPostal="ngModel" name="codPostal" required [(ngModel)]="service.formData.codPostal">
+                        <div *ngIf="codPostal.invalid && (codPostal.dirty || codPostal.touched)" class="alert alert-danger">
+                            <div *ngIf="codPostal.invalid">
+                                Introduzca un Codigo Postal
+                            </div>
+                            <div *ngIf="codPostal.errors.CodpostUnico">
+                                El Codigo Postal ya existe!!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombreCiudad" class="col-form-label">Nombre Ciudad:</label>
+                        <input type="text" class="form-control" #nombreCiudad="ngModel" name="nombreCiudad" required [(ngModel)]="service.formData.nombreCiudad">
+                        <div *ngIf="nombreCiudad.invalid && (nombreCiudad.dirty || nombreCiudad.touched)" class="alert alert-danger">
+                            <div *ngIf="nombreCiudad.invalid">
+                                Dato requerido
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcionCiudad" class="col-form-label">Descripción de Ciudad:</label>
+                        <textarea class="form-control" rows="5" #descripcionCiudad="ngModel" name="descripcionCiudad" required [(ngModel)]="service.formData.descripcionCiudad"></textarea>
+                        <div *ngIf="descripcionCiudad.invalid && (descripcionCiudad.dirty || descripcionCiudad.touched)" class="alert alert-danger">
+                            <div *ngIf="descripcionCiudad.invalid">
+                                Dato requerido
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="urlUbicacionCiudad" class="col-form-label">Ubicacion:</label>
+                        <input type="text" class="form-control" #urlUbicacionCiudad="ngModel" name="urlUbicacionCiudad" requiere [(ngModel)]="service.formData.urlUbicacionCiudad">
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="ciudad" (click)="resetForm()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

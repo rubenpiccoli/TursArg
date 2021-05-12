@@ -1,32 +1,38 @@
-import { Login } from './../models/login.model';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Usuarios } from './../models/usuarios.model';
+import { HttpClient } from '@angular/common/http';
+import { UrlService } from './url.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuarios } from '../models/usuarios.model';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
-  
-};
-let params= new HttpParams();
+import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-
-
+ //readonly rootURL = 'https://tursarg.azurewebsites.net/api'
   readonly rootURL = 'https://localhost:44332/api'
 
-  constructor(private http: HttpClient) { }
+  constructor(private url: UrlService, private http: HttpClient) { }
 
-  public login(formLogin:Login): Observable<any> {
+  urlLogin: any;
+
+  autenticarUsuario(datos: Usuarios) {
+    return this.http.post(this.url.urlLogin, datos);
+  }
+
+  obtenerUsuario(email: string) {
+    return this.http.get(this.url.urlRegistro + '?email=' + email)
+  }
+
+  public login(formLogin: Login): Observable<any> {
     //params=params.append("email", email)
-   // params=params.append("contrasenia", contrasenia)
-        return this.http.post(this.rootURL + '/USUARIOS1/Login', formLogin)
-       
+    // params=params.append("contrasenia", contrasenia)
+    return this.http.post(this.rootURL + '/USUARIOS1/login', formLogin)
+
 
 
   }
+
+
 }

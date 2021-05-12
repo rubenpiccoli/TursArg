@@ -1,1 +1,78 @@
-<p>chat works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Website with a contact Form 01</title>
+    <!-- GOOGLE FONTs -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
+
+<header>
+    <app-navbar></app-navbar>
+</header>
+<br>
+<br>
+<h1 style="color: rgb(99, 99, 231); font-size: 45px;" class="abs-center">
+    ¿Tienes alguna duda? ¡Contactanos!
+</h1>
+<br>
+
+<body>
+
+    <div class="content container abs-center">
+        <br>
+        <br>
+        <div style="width: 100%;" class="contact-wrapper animated bounceInUp">
+            <div class="contact-form">
+                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                    <p>
+                        <label class="fas fa-user" style="color: black;"> Nombre</label>
+                        <input name="Nombre_Apellido" #Nombre_Apellido="ngModel" [(ngModel)]="service.formData.Nombre_Apellido" class="form-control" required autofocus type="text">
+                    </p>
+                    <p>
+                        <label class="fas fa-envelope" style="color: black;"> Correo electronico</label>
+                        <input name="email" #email="ngModel" [(ngModel)]="service.formData.email" class="form-control" required autofocus type="text">
+                    </p>
+                    <!-- <p>
+                        <label class="fas fa-phone" style="color: black;"> Telefono</label>
+                        <input name="telefono" #telefono="ngModel" [(ngModel)]="service.formData.telefono"
+                            class="form-control" required autofocus>
+                    </p> -->
+                    <p>
+                        <label class="fas fa-question" style="color: black;"> Motivo</label>
+                        <input name="motivoConsulta" #motivoConsulta="ngModel" [(ngModel)]="service.formData.motivoConsulta" class="form-control" required autofocus type="text">
+                    </p>
+                    <p class="block">
+                        <label class="fas fa-edit" style="color: black;"> Mensaje</label>
+                        <input type="text" name="Mensaje" #Mensaje="ngModel" [(ngModel)]="service.formData.Mensaje" class="form-control" required autofocus rows="3">
+                    </p>
+                    <p style="font-weight: 550; color: white  ;" class="block">
+                        <button [disabled]="form.invalid " type="submit" style="font-weight: 550;">
+                            Enviar
+                        </button>
+                    </p>
+                </form>
+            </div>
+            <div class="contact-info">
+                <img style="height: 480px; width: 550px;" src="https://i.ibb.co/zhmBkHb/ic-header-contact-form-izq.png" alt="">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <br>
+
+</body>
+
+<app-footer></app-footer>
+
+</html>

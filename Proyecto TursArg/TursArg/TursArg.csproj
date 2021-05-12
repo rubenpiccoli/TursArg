@@ -264,29 +264,21 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CIUDADESController.cs" />
+    <Compile Include="Controllers\CONSULTAS_VIAEMAILController.cs" />
+    <Compile Include="Controllers\Encriptacion\Encriptacion.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PUBLICACIONESController.cs" />
+    <Compile Include="Controllers\TEMASDEFOROController.cs" />
     <Compile Include="Controllers\USUARIOS1Controller.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ATRACCIONES.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CHATS.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CIUDADES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DEPARTAMENTOS.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HISTORIAL_CLIMATICO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ITINERARIOS.cs">
+    <Compile Include="Models\CONSULTAS_VIAEMAIL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -318,6 +310,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bundles\assets\imagenes\canaval banner.jpg" />
+    <Content Include="Bundles\assets\imagenes\concordia_carrusel.jpg" />
+    <Content Include="Bundles\assets\imagenes\donde ir.jpg" />
+    <Content Include="Bundles\assets\imagenes\federacion_carrusel.jpg" />
+    <Content Include="Bundles\assets\imagenes\LogoTursArg - cono.png" />
+    <Content Include="Bundles\assets\imagenes\LogoTursArg palabra.png" />
+    <Content Include="Bundles\assets\imagenes\LogoTursArg.png" />
+    <Content Include="Bundles\assets\imagenes\naturaleza banner.jpg" />
+    <Content Include="Bundles\assets\imagenes\nogoya_carrusel.jpg" />
+    <Content Include="Bundles\assets\imagenes\parana.jpg" />
+    <Content Include="Bundles\assets\imagenes\playa banner.jpg" />
+    <Content Include="Bundles\assets\imagenes\pronostico_parana.jpg" />
+    <Content Include="Bundles\assets\imagenes\que hacer.jpg" />
+    <Content Include="Bundles\assets\imagenes\turismo cultural.jpg" />
+    <Content Include="Bundles\assets\imagenes\villaguay_carrusel.jpg" />
+    <Content Include="Bundles\assets\imagenes\VIVI-ARGENTINA-ENTRE-RIOS-EL-PALMAR.jpg" />
+    <Content Include="Bundles\fa-brands-400.svg" />
+    <Content Include="Bundles\fa-regular-400.svg" />
+    <Content Include="Bundles\fa-solid-900.svg" />
+    <Content Include="Bundles\favicon.ico" />
+    <Content Include="Bundles\index.html" />
+    <Content Include="Bundles\main.js" />
+    <Content Include="Bundles\polyfills.js" />
+    <Content Include="Bundles\runtime.js" />
+    <Content Include="Bundles\scripts.js" />
+    <Content Include="Bundles\styles.css" />
+    <Content Include="Bundles\vendor.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -328,10 +347,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.edmx.sql" />
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -346,6 +364,25 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Bundles\fa-brands-400.eot" />
+    <Content Include="Bundles\fa-brands-400.ttf" />
+    <Content Include="Bundles\fa-brands-400.woff" />
+    <Content Include="Bundles\fa-brands-400.woff2" />
+    <Content Include="Bundles\fa-regular-400.eot" />
+    <Content Include="Bundles\fa-regular-400.ttf" />
+    <Content Include="Bundles\fa-regular-400.woff" />
+    <Content Include="Bundles\fa-regular-400.woff2" />
+    <Content Include="Bundles\fa-solid-900.eot" />
+    <Content Include="Bundles\fa-solid-900.ttf" />
+    <Content Include="Bundles\fa-solid-900.woff" />
+    <Content Include="Bundles\fa-solid-900.woff2" />
+    <Content Include="Bundles\main.js.map" />
+    <Content Include="Bundles\polyfills.js.map" />
+    <Content Include="Bundles\runtime.js.map" />
+    <Content Include="Bundles\scripts.js.map" />
+    <Content Include="Bundles\styles.css.map" />
+    <Content Include="Bundles\vendor.js.map" />
+    <None Include="Properties\PublishProfiles\tursarg - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -377,6 +414,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Encriptacion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -398,6 +436,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -418,6 +459,9 @@
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:51087/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

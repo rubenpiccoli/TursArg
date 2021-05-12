@@ -9,4 +9,5 @@ export class Usuarios {
     contrasenia: string;
     // telefono: bigint;
     email: string;
+    // Token: string;
 }

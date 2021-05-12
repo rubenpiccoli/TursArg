@@ -5,81 +5,29 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BDTursArgModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ATRACCIONES">
-          <Key>
-            <PropertyRef Name="idAtraccion" />
-          </Key>
-          <Property Name="idAtraccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombreAtraccion" Type="varchar" MaxLength="50" />
-          <Property Name="direccionAtraccion" Type="varchar" MaxLength="50" />
-          <Property Name="descripcionAtraccion" Type="varchar" MaxLength="50" />
-          <Property Name="horarioAtraccion" Type="varchar" MaxLength="50" />
-          <Property Name="tarifaAtraccion" Type="varchar" MaxLength="50" />
-          <Property Name="serviciosAtraccion" Type="varchar" MaxLength="50" />
-          <Property Name="urlUbicacionAtraccion" Type="varchar" MaxLength="150" />
-          <Property Name="urlfotoAtraccion1" Type="varchar" MaxLength="150" />
-          <Property Name="urlfotoAtraccion2" Type="varchar" MaxLength="150" />
-          <Property Name="urlfotoAtraccion3" Type="varchar" MaxLength="150" />
-          <Property Name="codPostal_Atraccion" Type="int" />
-        </EntityType>
-        <EntityType Name="CHATS">
-          <Key>
-            <PropertyRef Name="idChat" />
-          </Key>
-          <Property Name="idChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fechaChat" Type="datetime" />
-          <Property Name="email" Type="varchar" MaxLength="100" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" />
-          <Property Name="apellido" Type="varchar" MaxLength="50" />
-          <Property Name="consulta" Type="varchar(max)" />
-          <Property Name="idUsuario_Chat" Type="int" />
-        </EntityType>
         <EntityType Name="CIUDADES">
           <Key>
-            <PropertyRef Name="codPostal" />
+            <PropertyRef Name="idCiudad" />
           </Key>
-          <Property Name="codPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descripcionCiudad" Type="varchar" MaxLength="50" />
+          <Property Name="idCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codPostal" Type="int" Nullable="false" />
+          <Property Name="descripcionCiudad" Type="varchar(max)" />
           <Property Name="nombreCiudad" Type="varchar" MaxLength="50" />
           <Property Name="urlUbicacionCiudad" Type="varchar" MaxLength="150" />
           <Property Name="urlfotoCiudad1" Type="varchar" MaxLength="150" />
           <Property Name="urlfotoCiudad2" Type="varchar" MaxLength="150" />
           <Property Name="urlfotoCiudad3" Type="varchar" MaxLength="150" />
-          <Property Name="idDepartamento_ciudad" Type="int" />
         </EntityType>
-        <EntityType Name="DEPARTAMENTOS">
+        <EntityType Name="CONSULTAS_VIAEMAIL">
           <Key>
-            <PropertyRef Name="idDepartamento" />
+            <PropertyRef Name="idConsulta" />
           </Key>
-          <Property Name="idDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombreDepartamento" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="HISTORIAL_CLIMATICO">
-          <Key>
-            <PropertyRef Name="idClima" />
-          </Key>
-          <Property Name="idClima" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fechaClima" Type="datetime" />
-          <Property Name="tempMin" Type="varchar" MaxLength="50" />
-          <Property Name="tempMax" Type="varchar" MaxLength="50" />
-          <Property Name="estadoClima" Type="varchar" MaxLength="50" />
-          <Property Name="codPostal_HistoClim" Type="int" />
-        </EntityType>
-        <EntityType Name="ITINERARIOS">
-          <Key>
-            <PropertyRef Name="idItinerario" />
-          </Key>
-          <Property Name="idItinerario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombreItinerario" Type="varchar" MaxLength="50" />
-          <Property Name="descripcionItinerario" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="ITINERARIOS_ATRACCIONES">
-          <Key>
-            <PropertyRef Name="ATRACCIONES_idAtraccion" />
-            <PropertyRef Name="ITINERARIOS_idItinerario" />
-          </Key>
-          <Property Name="ATRACCIONES_idAtraccion" Type="int" Nullable="false" />
-          <Property Name="ITINERARIOS_idItinerario" Type="int" Nullable="false" />
+          <Property Name="idConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Apellido" Type="varchar" MaxLength="150" />
+          <Property Name="email" Type="varchar" MaxLength="150" />
+          <Property Name="telefono" Type="bigint" Nullable="false" />
+          <Property Name="motivoConsulta" Type="varchar" MaxLength="100" />
+          <Property Name="Mensaje" Type="text" />
         </EntityType>
         <EntityType Name="PUBLICACIONES">
           <Key>
@@ -87,7 +35,7 @@
           </Key>
           <Property Name="idPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fechaPublicacion" Type="datetime" />
-          <Property Name="texto" Type="varchar(max)" />
+          <Property Name="textoPublicacion" Type="text" />
           <Property Name="idUserPublicacion" Type="int" />
           <Property Name="idTema_publicacion" Type="int" />
         </EntityType>
@@ -97,6 +45,8 @@
           </Key>
           <Property Name="idTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombreDeTema" Type="varchar" MaxLength="50" />
+          <Property Name="fechaTema" Type="datetime" />
+          <Property Name="fechaCierre" Type="datetime" />
           <Property Name="idUserForo" Type="int" />
         </EntityType>
         <EntityType Name="USUARIOS">
@@ -105,352 +55,38 @@
           </Key>
           <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="urlFotoUsuario" Type="varchar" MaxLength="100" />
-          <Property Name="nombreUsuario" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="nombreUsuario" Type="varchar" MaxLength="50" />
           <Property Name="nombre" Type="varchar" MaxLength="50" />
           <Property Name="apellido" Type="varchar" MaxLength="50" />
           <Property Name="telefono" Type="bigint" />
-          <Property Name="contrasenia" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="contrasenia" Type="varchar" MaxLength="150" />
           <Property Name="rolAdmin" Type="bit" />
-          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Token" Type="varchar" MaxLength="100" StoreGeneratedPattern="None" />
+          <Property Name="Token" Type="varchar" MaxLength="150" />
         </EntityType>
-        <EntityType Name="USUARIOS_CIUDADES">
-          <Key>
-            <PropertyRef Name="CIUDADES_codPostal" />
-            <PropertyRef Name="USUARIOS_idUsuario" />
-          </Key>
-          <Property Name="CIUDADES_codPostal" Type="int" Nullable="false" />
-          <Property Name="USUARIOS_idUsuario" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="fk_cut">
-          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
-          <End Role="TEMAS_DE_FORO" Type="Self.TEMAS_DE_FORO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="TEMAS_DE_FORO">
-              <PropertyRef Name="idUserForo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fcodp_hclim">
-          <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="0..1" />
-          <End Role="HISTORIAL_CLIMATICO" Type="Self.HISTORIAL_CLIMATICO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDADES">
-              <PropertyRef Name="codPostal" />
-            </Principal>
-            <Dependent Role="HISTORIAL_CLIMATICO">
-              <PropertyRef Name="codPostal_HistoClim" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fdpto_c">
-          <End Role="DEPARTAMENTOS" Type="Self.DEPARTAMENTOS" Multiplicity="0..1" />
-          <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEPARTAMENTOS">
-              <PropertyRef Name="idDepartamento" />
-            </Principal>
-            <Dependent Role="CIUDADES">
-              <PropertyRef Name="idDepartamento_ciudad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fid_User">
-          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
-          <End Role="PUBLICACIONES" Type="Self.PUBLICACIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="PUBLICACIONES">
-              <PropertyRef Name="idUserPublicacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fpostal_atracc">
-          <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="0..1" />
-          <End Role="ATRACCIONES" Type="Self.ATRACCIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDADES">
-              <PropertyRef Name="codPostal" />
-            </Principal>
-            <Dependent Role="ATRACCIONES">
-              <PropertyRef Name="codPostal_Atraccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ftema_publi">
-          <End Role="TEMAS_DE_FORO" Type="Self.TEMAS_DE_FORO" Multiplicity="0..1" />
-          <End Role="PUBLICACIONES" Type="Self.PUBLICACIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TEMAS_DE_FORO">
-              <PropertyRef Name="idTema" />
-            </Principal>
-            <Dependent Role="PUBLICACIONES">
-              <PropertyRef Name="idTema_publicacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fUsuChat">
-          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
-          <End Role="CHATS" Type="Self.CHATS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="CHATS">
-              <PropertyRef Name="idUsuario_Chat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ITINERARIOS_ATRACCIONES_ATRACCIONES">
-          <End Role="ATRACCIONES" Type="Self.ATRACCIONES" Multiplicity="1" />
-          <End Role="ITINERARIOS_ATRACCIONES" Type="Self.ITINERARIOS_ATRACCIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ATRACCIONES">
-              <PropertyRef Name="idAtraccion" />
-            </Principal>
-            <Dependent Role="ITINERARIOS_ATRACCIONES">
-              <PropertyRef Name="ATRACCIONES_idAtraccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ITINERARIOS_ATRACCIONES_ITINERARIOS">
-          <End Role="ITINERARIOS" Type="Self.ITINERARIOS" Multiplicity="1" />
-          <End Role="ITINERARIOS_ATRACCIONES" Type="Self.ITINERARIOS_ATRACCIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ITINERARIOS">
-              <PropertyRef Name="idItinerario" />
-            </Principal>
-            <Dependent Role="ITINERARIOS_ATRACCIONES">
-              <PropertyRef Name="ITINERARIOS_idItinerario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIOS_CIUDADES_CIUDADES">
-          <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="1" />
-          <End Role="USUARIOS_CIUDADES" Type="Self.USUARIOS_CIUDADES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDADES">
-              <PropertyRef Name="codPostal" />
-            </Principal>
-            <Dependent Role="USUARIOS_CIUDADES">
-              <PropertyRef Name="CIUDADES_codPostal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIOS_CIUDADES_USUARIOS">
-          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
-          <End Role="USUARIOS_CIUDADES" Type="Self.USUARIOS_CIUDADES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="USUARIOS_CIUDADES">
-              <PropertyRef Name="USUARIOS_idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="BDTursArgModelStoreContainer">
-          <EntitySet Name="ATRACCIONES" EntityType="Self.ATRACCIONES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CHATS" EntityType="Self.CHATS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DEPARTAMENTOS" EntityType="Self.DEPARTAMENTOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HISTORIAL_CLIMATICO" EntityType="Self.HISTORIAL_CLIMATICO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ITINERARIOS" EntityType="Self.ITINERARIOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ITINERARIOS_ATRACCIONES" EntityType="Self.ITINERARIOS_ATRACCIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONSULTAS_VIAEMAIL" EntityType="Self.CONSULTAS_VIAEMAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUBLICACIONES" EntityType="Self.PUBLICACIONES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEMAS_DE_FORO" EntityType="Self.TEMAS_DE_FORO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USUARIOS_CIUDADES" EntityType="Self.USUARIOS_CIUDADES" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="fk_cut" Association="Self.fk_cut">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fcodp_hclim" Association="Self.fk_fcodp_hclim">
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-            <End Role="HISTORIAL_CLIMATICO" EntitySet="HISTORIAL_CLIMATICO" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fdpto_c" Association="Self.fk_fdpto_c">
-            <End Role="DEPARTAMENTOS" EntitySet="DEPARTAMENTOS" />
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fid_User" Association="Self.fk_fid_User">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fpostal_atracc" Association="Self.fk_fpostal_atracc">
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-            <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ftema_publi" Association="Self.fk_ftema_publi">
-            <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
-            <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fUsuChat" Association="Self.fk_fUsuChat">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="CHATS" EntitySet="CHATS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ITINERARIOS_ATRACCIONES_ATRACCIONES" Association="Self.FK_ITINERARIOS_ATRACCIONES_ATRACCIONES">
-            <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
-            <End Role="ITINERARIOS_ATRACCIONES" EntitySet="ITINERARIOS_ATRACCIONES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ITINERARIOS_ATRACCIONES_ITINERARIOS" Association="Self.FK_ITINERARIOS_ATRACCIONES_ITINERARIOS">
-            <End Role="ITINERARIOS" EntitySet="ITINERARIOS" />
-            <End Role="ITINERARIOS_ATRACCIONES" EntitySet="ITINERARIOS_ATRACCIONES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIOS_CIUDADES_CIUDADES" Association="Self.FK_USUARIOS_CIUDADES_CIUDADES">
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-            <End Role="USUARIOS_CIUDADES" EntitySet="USUARIOS_CIUDADES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIOS_CIUDADES_USUARIOS" Association="Self.FK_USUARIOS_CIUDADES_USUARIOS">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="USUARIOS_CIUDADES" EntitySet="USUARIOS_CIUDADES" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDTursArgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="BDTursArgEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ATRACCIONES" EntityType="BDTursArgModel.ATRACCIONES" />
-          <EntitySet Name="CHATS" EntityType="BDTursArgModel.CHATS" />
-          <EntitySet Name="CIUDADES" EntityType="BDTursArgModel.CIUDADES" />
-          <EntitySet Name="DEPARTAMENTOS" EntityType="BDTursArgModel.DEPARTAMENTOS" />
-          <EntitySet Name="HISTORIAL_CLIMATICO" EntityType="BDTursArgModel.HISTORIAL_CLIMATICO" />
-          <EntitySet Name="ITINERARIOS" EntityType="BDTursArgModel.ITINERARIOS" />
-          <EntitySet Name="PUBLICACIONES" EntityType="BDTursArgModel.PUBLICACIONES" />
-          <EntitySet Name="TEMAS_DE_FORO" EntityType="BDTursArgModel.TEMAS_DE_FORO" />
-          <AssociationSet Name="fk_fpostal_atracc" Association="BDTursArgModel.fk_fpostal_atracc">
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-            <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fcodp_hclim" Association="BDTursArgModel.fk_fcodp_hclim">
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-            <End Role="HISTORIAL_CLIMATICO" EntitySet="HISTORIAL_CLIMATICO" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fdpto_c" Association="BDTursArgModel.fk_fdpto_c">
-            <End Role="DEPARTAMENTOS" EntitySet="DEPARTAMENTOS" />
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ftema_publi" Association="BDTursArgModel.fk_ftema_publi">
-            <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
-            <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
-          </AssociationSet>
-          <AssociationSet Name="ITINERARIOS_ATRACCIONES" Association="BDTursArgModel.ITINERARIOS_ATRACCIONES">
-            <End Role="ATRACCIONES" EntitySet="ATRACCIONES" />
-            <End Role="ITINERARIOS" EntitySet="ITINERARIOS" />
-          </AssociationSet>
-          <EntitySet Name="USUARIOS" EntityType="BDTursArgModel.USUARIOS" />
-          <AssociationSet Name="fk_fUsuChat" Association="BDTursArgModel.fk_fUsuChat">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="CHATS" EntitySet="CHATS" />
-          </AssociationSet>
-          <AssociationSet Name="fk_fid_User" Association="BDTursArgModel.fk_fid_User">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="PUBLICACIONES" EntitySet="PUBLICACIONES" />
-          </AssociationSet>
-          <AssociationSet Name="fk_cut" Association="BDTursArgModel.fk_cut">
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="TEMAS_DE_FORO" EntitySet="TEMAS_DE_FORO" />
-          </AssociationSet>
-          <AssociationSet Name="USUARIOS_CIUDADES" Association="BDTursArgModel.USUARIOS_CIUDADES">
-            <End Role="CIUDADES" EntitySet="CIUDADES" />
-            <End Role="USUARIOS" EntitySet="USUARIOS" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="ATRACCIONES">
-          <Key>
-            <PropertyRef Name="idAtraccion" />
-          </Key>
-          <Property Name="idAtraccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="direccionAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="descripcionAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="horarioAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tarifaAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="serviciosAtraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="urlUbicacionAtraccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="urlfotoAtraccion1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="urlfotoAtraccion2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="urlfotoAtraccion3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="codPostal_Atraccion" Type="Int32" />
-          <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.fk_fpostal_atracc" FromRole="ATRACCIONES" ToRole="CIUDADES" />
-          <NavigationProperty Name="ITINERARIOS" Relationship="BDTursArgModel.ITINERARIOS_ATRACCIONES" FromRole="ATRACCIONES" ToRole="ITINERARIOS" />
-        </EntityType>
-        <EntityType Name="CHATS">
-          <Key>
-            <PropertyRef Name="idChat" />
-          </Key>
-          <Property Name="idChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaChat" Type="DateTime" Precision="3" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="consulta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idUsuario_Chat" Type="Int32" />
-          <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.fk_fUsuChat" FromRole="CHATS" ToRole="USUARIOS" />
-        </EntityType>
         <EntityType Name="CIUDADES">
           <Key>
-            <PropertyRef Name="codPostal" />
+            <PropertyRef Name="idCiudad" />
           </Key>
-          <Property Name="codPostal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcionCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codPostal" Type="Int32" Nullable="false" />
+          <Property Name="descripcionCiudad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nombreCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="urlUbicacionCiudad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="urlfotoCiudad1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="urlfotoCiudad2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="urlfotoCiudad3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="idDepartamento_ciudad" Type="Int32" />
-          <NavigationProperty Name="ATRACCIONES" Relationship="BDTursArgModel.fk_fpostal_atracc" FromRole="CIUDADES" ToRole="ATRACCIONES" />
-          <NavigationProperty Name="HISTORIAL_CLIMATICO" Relationship="BDTursArgModel.fk_fcodp_hclim" FromRole="CIUDADES" ToRole="HISTORIAL_CLIMATICO" />
-          <NavigationProperty Name="DEPARTAMENTOS" Relationship="BDTursArgModel.fk_fdpto_c" FromRole="CIUDADES" ToRole="DEPARTAMENTOS" />
-          <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.USUARIOS_CIUDADES" FromRole="CIUDADES" ToRole="USUARIOS" />
-        </EntityType>
-        <EntityType Name="DEPARTAMENTOS">
-          <Key>
-            <PropertyRef Name="idDepartamento" />
-          </Key>
-          <Property Name="idDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.fk_fdpto_c" FromRole="DEPARTAMENTOS" ToRole="CIUDADES" />
-        </EntityType>
-        <EntityType Name="HISTORIAL_CLIMATICO">
-          <Key>
-            <PropertyRef Name="idClima" />
-          </Key>
-          <Property Name="idClima" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaClima" Type="DateTime" Precision="3" />
-          <Property Name="tempMin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tempMax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="estadoClima" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="codPostal_HistoClim" Type="Int32" />
-          <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.fk_fcodp_hclim" FromRole="HISTORIAL_CLIMATICO" ToRole="CIUDADES" />
-        </EntityType>
-        <EntityType Name="ITINERARIOS">
-          <Key>
-            <PropertyRef Name="idItinerario" />
-          </Key>
-          <Property Name="idItinerario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreItinerario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="descripcionItinerario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ATRACCIONES" Relationship="BDTursArgModel.ITINERARIOS_ATRACCIONES" FromRole="ITINERARIOS" ToRole="ATRACCIONES" />
-        </EntityType>
-        <EntityType Name="PUBLICACIONES">
-          <Key>
-            <PropertyRef Name="idPublicacion" />
-          </Key>
-          <Property Name="idPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaPublicacion" Type="DateTime" Precision="3" />
-          <Property Name="texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idUserPublicacion" Type="Int32" />
-          <Property Name="idTema_publicacion" Type="Int32" />
-          <NavigationProperty Name="TEMAS_DE_FORO" Relationship="BDTursArgModel.fk_ftema_publi" FromRole="PUBLICACIONES" ToRole="TEMAS_DE_FORO" />
-          <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.fk_fid_User" FromRole="PUBLICACIONES" ToRole="USUARIOS" />
         </EntityType>
         <EntityType Name="TEMAS_DE_FORO">
           <Key>
@@ -459,254 +95,125 @@
           <Property Name="idTema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreDeTema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idUserForo" Type="Int32" />
-          <NavigationProperty Name="PUBLICACIONES" Relationship="BDTursArgModel.fk_ftema_publi" FromRole="TEMAS_DE_FORO" ToRole="PUBLICACIONES" />
-          <NavigationProperty Name="USUARIOS" Relationship="BDTursArgModel.fk_cut" FromRole="TEMAS_DE_FORO" ToRole="USUARIOS" />
+          <Property Name="fechaTema" Type="DateTime" Precision="3" />
+          <Property Name="fechaCierre" Type="DateTime" Precision="3" />
         </EntityType>
-        <Association Name="fk_fpostal_atracc">
-          <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.ATRACCIONES" Role="ATRACCIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDADES">
-              <PropertyRef Name="codPostal" />
-            </Principal>
-            <Dependent Role="ATRACCIONES">
-              <PropertyRef Name="codPostal_Atraccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fcodp_hclim">
-          <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.HISTORIAL_CLIMATICO" Role="HISTORIAL_CLIMATICO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CIUDADES">
-              <PropertyRef Name="codPostal" />
-            </Principal>
-            <Dependent Role="HISTORIAL_CLIMATICO">
-              <PropertyRef Name="codPostal_HistoClim" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fdpto_c">
-          <End Type="BDTursArgModel.DEPARTAMENTOS" Role="DEPARTAMENTOS" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEPARTAMENTOS">
-              <PropertyRef Name="idDepartamento" />
-            </Principal>
-            <Dependent Role="CIUDADES">
-              <PropertyRef Name="idDepartamento_ciudad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ftema_publi">
-          <End Type="BDTursArgModel.TEMAS_DE_FORO" Role="TEMAS_DE_FORO" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.PUBLICACIONES" Role="PUBLICACIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TEMAS_DE_FORO">
-              <PropertyRef Name="idTema" />
-            </Principal>
-            <Dependent Role="PUBLICACIONES">
-              <PropertyRef Name="idTema_publicacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ITINERARIOS_ATRACCIONES">
-          <End Type="BDTursArgModel.ATRACCIONES" Role="ATRACCIONES" Multiplicity="*" />
-          <End Type="BDTursArgModel.ITINERARIOS" Role="ITINERARIOS" Multiplicity="*" />
-        </Association>
         <EntityType Name="USUARIOS">
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
           <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="urlFotoUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="nombreUsuario" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="Int64" />
-          <Property Name="contrasenia" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contrasenia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="rolAdmin" Type="Boolean" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <NavigationProperty Name="CHATS" Relationship="BDTursArgModel.fk_fUsuChat" FromRole="USUARIOS" ToRole="CHATS" />
-          <NavigationProperty Name="PUBLICACIONES" Relationship="BDTursArgModel.fk_fid_User" FromRole="USUARIOS" ToRole="PUBLICACIONES" />
-          <NavigationProperty Name="TEMAS_DE_FORO" Relationship="BDTursArgModel.fk_cut" FromRole="USUARIOS" ToRole="TEMAS_DE_FORO" />
-          <NavigationProperty Name="CIUDADES" Relationship="BDTursArgModel.USUARIOS_CIUDADES" FromRole="USUARIOS" ToRole="CIUDADES" />
+          <Property Name="Token" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="fk_fUsuChat">
-          <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.CHATS" Role="CHATS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="CHATS">
-              <PropertyRef Name="idUsuario_Chat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_fid_User">
-          <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.PUBLICACIONES" Role="PUBLICACIONES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="PUBLICACIONES">
-              <PropertyRef Name="idUserPublicacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_cut">
-          <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="0..1" />
-          <End Type="BDTursArgModel.TEMAS_DE_FORO" Role="TEMAS_DE_FORO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USUARIOS">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="TEMAS_DE_FORO">
-              <PropertyRef Name="idUserForo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="USUARIOS_CIUDADES">
-          <End Type="BDTursArgModel.CIUDADES" Role="CIUDADES" Multiplicity="*" />
-          <End Type="BDTursArgModel.USUARIOS" Role="USUARIOS" Multiplicity="*" />
-        </Association>
+        <EntityContainer Name="BDTursArgEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" />
+          <EntitySet Name="TEMAS_DE_FORO" EntityType="Self.TEMAS_DE_FORO" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <EntitySet Name="CONSULTAS_VIAEMAIL" EntityType="BDTursArgModel.CONSULTAS_VIAEMAIL" />
+          <EntitySet Name="PUBLICACIONES" EntityType="BDTursArgModel.PUBLICACIONES" />
+        </EntityContainer>
+        <EntityType Name="CONSULTAS_VIAEMAIL">
+          <Key>
+            <PropertyRef Name="idConsulta" />
+          </Key>
+          <Property Name="idConsulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="Int64" Nullable="false" />
+          <Property Name="motivoConsulta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PUBLICACIONES">
+          <Key>
+            <PropertyRef Name="idPublicacion" />
+          </Key>
+          <Property Name="idPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaPublicacion" Type="DateTime" Precision="3" />
+          <Property Name="textoPublicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idUserPublicacion" Type="Int32" />
+          <Property Name="idTema_publicacion" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BDTursArgModelStoreContainer" CdmEntityContainer="BDTursArgEntities">
-    <EntitySetMapping Name="ATRACCIONES">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.ATRACCIONES)">
-        <MappingFragment StoreEntitySet="ATRACCIONES">
-          <ScalarProperty Name="idAtraccion" ColumnName="idAtraccion" />
-          <ScalarProperty Name="nombreAtraccion" ColumnName="nombreAtraccion" />
-          <ScalarProperty Name="direccionAtraccion" ColumnName="direccionAtraccion" />
-          <ScalarProperty Name="descripcionAtraccion" ColumnName="descripcionAtraccion" />
-          <ScalarProperty Name="horarioAtraccion" ColumnName="horarioAtraccion" />
-          <ScalarProperty Name="tarifaAtraccion" ColumnName="tarifaAtraccion" />
-          <ScalarProperty Name="serviciosAtraccion" ColumnName="serviciosAtraccion" />
-          <ScalarProperty Name="urlUbicacionAtraccion" ColumnName="urlUbicacionAtraccion" />
-          <ScalarProperty Name="urlfotoAtraccion1" ColumnName="urlfotoAtraccion1" />
-          <ScalarProperty Name="urlfotoAtraccion2" ColumnName="urlfotoAtraccion2" />
-          <ScalarProperty Name="urlfotoAtraccion3" ColumnName="urlfotoAtraccion3" />
-          <ScalarProperty Name="codPostal_Atraccion" ColumnName="codPostal_Atraccion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CHATS">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.CHATS)">
-        <MappingFragment StoreEntitySet="CHATS">
-          <ScalarProperty Name="idChat" ColumnName="idChat" />
-          <ScalarProperty Name="fechaChat" ColumnName="fechaChat" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="apellido" ColumnName="apellido" />
-          <ScalarProperty Name="consulta" ColumnName="consulta" />
-          <ScalarProperty Name="idUsuario_Chat" ColumnName="idUsuario_Chat" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CIUDADES">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.CIUDADES)">
-        <MappingFragment StoreEntitySet="CIUDADES">
-          <ScalarProperty Name="codPostal" ColumnName="codPostal" />
-          <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
-          <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
-          <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
-          <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
-          <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
-          <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
-          <ScalarProperty Name="idDepartamento_ciudad" ColumnName="idDepartamento_ciudad" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DEPARTAMENTOS">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.DEPARTAMENTOS)">
-        <MappingFragment StoreEntitySet="DEPARTAMENTOS">
-          <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
-          <ScalarProperty Name="nombreDepartamento" ColumnName="nombreDepartamento" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HISTORIAL_CLIMATICO">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.HISTORIAL_CLIMATICO)">
-        <MappingFragment StoreEntitySet="HISTORIAL_CLIMATICO">
-          <ScalarProperty Name="idClima" ColumnName="idClima" />
-          <ScalarProperty Name="fechaClima" ColumnName="fechaClima" />
-          <ScalarProperty Name="tempMin" ColumnName="tempMin" />
-          <ScalarProperty Name="tempMax" ColumnName="tempMax" />
-          <ScalarProperty Name="estadoClima" ColumnName="estadoClima" />
-          <ScalarProperty Name="codPostal_HistoClim" ColumnName="codPostal_HistoClim" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ITINERARIOS">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.ITINERARIOS)">
-        <MappingFragment StoreEntitySet="ITINERARIOS">
-          <ScalarProperty Name="idItinerario" ColumnName="idItinerario" />
-          <ScalarProperty Name="nombreItinerario" ColumnName="nombreItinerario" />
-          <ScalarProperty Name="descripcionItinerario" ColumnName="descripcionItinerario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PUBLICACIONES">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.PUBLICACIONES)">
-        <MappingFragment StoreEntitySet="PUBLICACIONES">
-          <ScalarProperty Name="idPublicacion" ColumnName="idPublicacion" />
-          <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
-          <ScalarProperty Name="texto" ColumnName="texto" />
-          <ScalarProperty Name="idUserPublicacion" ColumnName="idUserPublicacion" />
-          <ScalarProperty Name="idTema_publicacion" ColumnName="idTema_publicacion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TEMAS_DE_FORO">
-      <EntityTypeMapping TypeName="IsTypeOf(BDTursArgModel.TEMAS_DE_FORO)">
-        <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
-          <ScalarProperty Name="idTema" ColumnName="idTema" />
-          <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
-          <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="ITINERARIOS_ATRACCIONES" TypeName="BDTursArgModel.ITINERARIOS_ATRACCIONES" StoreEntitySet="ITINERARIOS_ATRACCIONES">
-      <EndProperty Name="ATRACCIONES">
-        <ScalarProperty Name="idAtraccion" ColumnName="ATRACCIONES_idAtraccion" />
-      </EndProperty>
-      <EndProperty Name="ITINERARIOS">
-        <ScalarProperty Name="idItinerario" ColumnName="ITINERARIOS_idItinerario" />
-      </EndProperty>
-    </AssociationSetMapping>
-          <EntitySetMapping Name="USUARIOS">
-            <EntityTypeMapping TypeName="BDTursArgModel.USUARIOS">
-              <MappingFragment StoreEntitySet="USUARIOS">
-                <ScalarProperty Name="Token" ColumnName="Token" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="rolAdmin" ColumnName="rolAdmin" />
-                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
-                <ScalarProperty Name="urlFotoUsuario" ColumnName="urlFotoUsuario" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDTursArgModelStoreContainer" CdmEntityContainer="BDTursArgEntities">
+          <EntitySetMapping Name="CIUDADES">
+            <EntityTypeMapping TypeName="BDTursArgModel.CIUDADES">
+              <MappingFragment StoreEntitySet="CIUDADES">
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="codPostal" ColumnName="codPostal" />
+                <ScalarProperty Name="descripcionCiudad" ColumnName="descripcionCiudad" />
+                <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+                <ScalarProperty Name="urlUbicacionCiudad" ColumnName="urlUbicacionCiudad" />
+                <ScalarProperty Name="urlfotoCiudad1" ColumnName="urlfotoCiudad1" />
+                <ScalarProperty Name="urlfotoCiudad2" ColumnName="urlfotoCiudad2" />
+                <ScalarProperty Name="urlfotoCiudad3" ColumnName="urlfotoCiudad3" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="USUARIOS_CIUDADES" TypeName="BDTursArgModel.USUARIOS_CIUDADES" StoreEntitySet="USUARIOS_CIUDADES">
-            <EndProperty Name="USUARIOS">
-              <ScalarProperty Name="idUsuario" ColumnName="USUARIOS_idUsuario" />
-            </EndProperty>
-            <EndProperty Name="CIUDADES">
-              <ScalarProperty Name="codPostal" ColumnName="CIUDADES_codPostal" />
-            </EndProperty>
-          </AssociationSetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+          <EntitySetMapping Name="TEMAS_DE_FORO">
+            <EntityTypeMapping TypeName="BDTursArgModel.TEMAS_DE_FORO">
+              <MappingFragment StoreEntitySet="TEMAS_DE_FORO">
+                <ScalarProperty Name="idTema" ColumnName="idTema" />
+                <ScalarProperty Name="nombreDeTema" ColumnName="nombreDeTema" />
+                <ScalarProperty Name="idUserForo" ColumnName="idUserForo" />
+                <ScalarProperty Name="fechaTema" ColumnName="fechaTema" />
+                <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="BDTursArgModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="urlFotoUsuario" ColumnName="urlFotoUsuario" />
+                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+                <ScalarProperty Name="rolAdmin" ColumnName="rolAdmin" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSULTAS_VIAEMAIL">
+            <EntityTypeMapping TypeName="BDTursArgModel.CONSULTAS_VIAEMAIL">
+              <MappingFragment StoreEntitySet="CONSULTAS_VIAEMAIL">
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Nombre_Apellido" ColumnName="Nombre_Apellido" />
+                <ScalarProperty Name="idConsulta" ColumnName="idConsulta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUBLICACIONES">
+            <EntityTypeMapping TypeName="BDTursArgModel.PUBLICACIONES">
+              <MappingFragment StoreEntitySet="PUBLICACIONES">
+                <ScalarProperty Name="idTema_publicacion" ColumnName="idTema_publicacion" />
+                <ScalarProperty Name="idUserPublicacion" ColumnName="idUserPublicacion" />
+                <ScalarProperty Name="textoPublicacion" ColumnName="textoPublicacion" />
+                <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
+                <ScalarProperty Name="idPublicacion" ColumnName="idPublicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -720,7 +227,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>

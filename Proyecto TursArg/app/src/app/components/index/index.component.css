@@ -1,3 +1,7 @@
 #cerrarsession {
-    text-decoration: overline;
+    text-decoration: underline;
+}
+
+#cerrarsession :hover {
+    color: red !important;
 }

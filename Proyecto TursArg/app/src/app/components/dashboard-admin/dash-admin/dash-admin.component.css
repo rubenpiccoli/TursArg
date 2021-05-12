@@ -1,0 +1,39 @@
+.card {
+    border: 1px solid rgb(11, 11, 110);
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    border-radius: 25px;
+    height: 200px;
+    width: 250px;
+}
+
+.card i {
+    font-size: 100px;
+}
+
+.card:hover {
+    background: rgba(67, 67, 244, 1);
+}
+
+.card a:hover {
+    color: white;
+}
+
+.card a {
+    color: rgb(35, 35, 143);
+}
+
+.container {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card a {
+    font-size: 20px;
+}

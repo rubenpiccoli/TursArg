@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<header>
+    <app-navbar></app-navbar>
+</header>
+
+<body>
+
+    <div class="container">
+        <br>
+        <h2 style="padding-left: 0.5rem;">Consultas realizadas</h2>
+
+        <div class="row">
+            <div class="col">
+                <div style="padding-left: 1rem;" class="form-group">
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Nombre y Apellido</th>
+                        <th>Motivo</th>
+                        <th>Consulta</th>
+                        <th>Responder via mail</th>
+
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let get of consulta">
+                            <td>{{get.Nombre_Apellido}}</td>
+                            <td>{{get.motivoConsulta}}</td>
+                            <td>{{get.Mensaje}}</td>
+                            <td>{{get.email}}</td>
+
+
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+
+
+
+</html>

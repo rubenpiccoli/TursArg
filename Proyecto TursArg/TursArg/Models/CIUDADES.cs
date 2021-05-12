@@ -14,14 +14,7 @@ namespace TursArg.Models
     
     public partial class CIUDADES
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CIUDADES()
-        {
-            this.ATRACCIONES = new HashSet<ATRACCIONES>();
-            this.HISTORIAL_CLIMATICO = new HashSet<HISTORIAL_CLIMATICO>();
-            this.USUARIOS = new HashSet<USUARIOS>();
-        }
-    
+        public int idCiudad { get; set; }
         public int codPostal { get; set; }
         public string descripcionCiudad { get; set; }
         public string nombreCiudad { get; set; }
@@ -29,14 +22,5 @@ namespace TursArg.Models
         public string urlfotoCiudad1 { get; set; }
         public string urlfotoCiudad2 { get; set; }
         public string urlfotoCiudad3 { get; set; }
-        public Nullable<int> idDepartamento_ciudad { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ATRACCIONES> ATRACCIONES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HISTORIAL_CLIMATICO> HISTORIAL_CLIMATICO { get; set; }
-        public virtual DEPARTAMENTOS DEPARTAMENTOS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIOS> USUARIOS { get; set; }
     }
 }

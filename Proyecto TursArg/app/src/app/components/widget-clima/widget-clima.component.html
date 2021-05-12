@@ -1,0 +1,172 @@
+<div class="container text-center">
+    <h2 style="font-size: 1.5rem; color: rgb(14, 126, 14);">¡Consulte el clima de cualquier ciudad de Argentina!</h2>
+</div>
+<br>
+<div class="container col-sm-3">
+    <div class="card card-body ">
+        <form (submit)="submitLocation(cityName)">
+            <input type="text" placeholder="Nombre Ciudad" class="form-control" autofocus #cityName>
+            <button style="background-color: rgb(14, 126, 14);" class="btn btn-primary btn-block mt-2">
+                Obtener clima
+            </button>
+        </form>
+    </div>
+</div>
+<br>
+<div class="container abs-center">
+
+    <div class="row abs-center">
+
+        <div class="abs-center" id="divWeatherMain">
+            <div style="padding-right: 3rem; padding-left: -1;" class="row text-center">
+                <div id="cardClima">
+                    <div style="text-transform: uppercase;" class="weatherWidgetRow fa fa-map-pin pt-2 "><i aria-hidden="true"></i> {{weather.address}}
+                    </div>
+
+                    <div *ngIf="weather.currentConditions.icon=='clear-day'" class="weatherWidgetRow">
+                        <img class="img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
+                        <p class="description-w">Soleado</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='clear-night'" class="weatherWidgetRow">
+                        <img class=" img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
+                        <p class="description-w">Noche despejada</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='cloudy'" class="weatherWidgetRow">
+                        <img class=" img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
+                        <p class="description-w">Nublado</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='rain'" class="weatherWidgetRow">
+                        <img class=" img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
+                        <p class="description-w">Lluvia</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='partly-cloudy-day'" class="weatherWidgetRow">
+                        <img class=" img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
+                        <p class="description-w">Parcialmente nublado</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='partly-cloudy-night'" class="weatherWidgetRow">
+                        <img class=" img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
+                        <p class="description-w">Parcialmente nublado</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='fog'" class="weatherWidgetRow">
+                        <img class=" img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">
+                        <p class="description-w">Niebla</p>
+                    </div>
+                    <div *ngIf="weather.currentConditions.icon=='wind'" class="weatherWidgetRow">
+                        <img class=" img-fluid" src="https://i.ibb.co/Fzf50CB/wind.png" alt="viento">
+                        <p class="description-w">Vientos fuertes</p>
+                    </div>
+
+                    <div class="weatherWidgetRow pb-1 ">Temperatura: {{weather.currentConditions.temp}}°C</div>
+                    <div class="weatherWidgetRow pb-1 ">Máx: {{weather.days[0].tempmax}}°C</div>
+                    <div class="weatherWidgetRow pb-1 ">Mín: {{weather.days[0].tempmin}}°C</div>
+
+                    <!-- <div class="weatherWidgetRow">Humedad: {{weather.currentConditions.humidity}}%</div> -->
+                </div>
+
+            </div>
+
+            <div style="padding-right: 1.5rem;" id="cardClima">
+                <p>{{weather.days[1].datetime}}</p>
+
+                <div *ngIf="weather.days[1].icon=='clear-day'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
+                </div>
+                <div *ngIf="weather.days[1].icon=='clear-night'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
+                </div>
+                <div *ngIf="weather.days[1].icon=='cloudy'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
+                </div>
+                <div *ngIf="weather.days[1].icon=='rain'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
+                </div>
+                <div *ngIf="weather.days[1].icon=='partly-cloudy-day'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
+                </div>
+                <div *ngIf="weather.days[1].icon=='partly-cloudy-night'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
+                </div>
+                <div *ngIf="weather.days[1].icon=='fog'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">
+                </div>
+                <div *ngIf="weather.days[1].icon=='wind'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/Fzf50CB/wind.png" alt="viento">
+                </div>
+
+                <div id="sizeTextDays" class="weatherWidgetRow pb-1 ">Máx: {{weather.days[1].tempmax}}°C</div>
+                <div id="sizeTextDays" class="weatherWidgetRow pb-1 ">Mín: {{weather.days[1].tempmin}}°C</div>
+
+                <!-- <div class="weatherWidgetRow">Humedad: {{weather.currentConditions.humidity}}%</div> -->
+            </div>
+            <div style="padding-right: 1.5rem;" id="cardClima">
+                <p>{{weather.days[2].datetime}}</p>
+
+
+                <div *ngIf="weather.days[2].icon=='clear-day'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
+                </div>
+                <div *ngIf="weather.days[2].icon=='clear-night'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
+                </div>
+                <div *ngIf="weather.days[2].icon=='cloudy'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
+                </div>
+                <div *ngIf="weather.days[2].icon=='rain'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
+                </div>
+                <div *ngIf="weather.days[2].icon=='partly-cloudy-day'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
+                </div>
+                <div *ngIf="weather.days[2].icon=='partly-cloudy-night'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
+                </div>
+                <div *ngIf="weather.days[2].icon=='fog'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">
+                </div>
+                <div *ngIf="weather.days[2].icon=='wind'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/Fzf50CB/wind.png" alt="viento">
+                </div>
+
+                <div id="sizeTextDays" class="weatherWidgetRow pb-1 ">Máx: {{weather.days[2].tempmax}}°C</div>
+                <div id="sizeTextDays" class="weatherWidgetRow pb-1 ">Mín: {{weather.days[2].tempmin}}°C</div>
+
+                <!-- <div class="weatherWidgetRow">Humedad: {{weather.currentConditions.humidity}}%</div> -->
+            </div>
+            <div style="margin-right: -1;" id="cardClima">
+                <p>{{weather.days[3].datetime}}</p>
+
+
+                <div *ngIf="weather.days[3].icon=='clear-day'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/3FDq0b4/day-clear.png" alt="soleado">
+                </div>
+                <div *ngIf="weather.days[3].icon=='clear-night'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/crcBdrg/night-clear.png" alt="despejadoNoche">
+                </div>
+                <div *ngIf="weather.days[3].icon=='cloudy'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid m-0" src="https://i.ibb.co/XyTGgdp/cloudy.png" alt="nublado">
+                </div>
+                <div *ngIf="weather.days[3].icon=='rain'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/9stT1fm/rain.png" alt="lluvia">
+                </div>
+                <div *ngIf="weather.days[3].icon=='partly-cloudy-day'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/zrRK68r/day-partial-cloud.png" alt="nubladoParcialDia">
+                </div>
+                <div *ngIf="weather.days[3].icon=='partly-cloudy-night'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/hfSq2Zr/night-partial-cloud.png" alt="nubladoParcialNoche">
+                </div>
+                <div *ngIf="weather.days[3].icon=='fog'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/30mLckX/fog.png" alt="niebla">
+                </div>
+                <div *ngIf="weather.days[3].icon=='wind'" class="weatherWidgetRow">
+                    <img class="imagenlogo img-fluid" src="https://i.ibb.co/Fzf50CB/wind.png" alt="viento">
+                </div>
+
+                <div id="sizeTextDays" class="weatherWidgetRow pb-1 ">Máx: {{weather.days[3].tempmax}}°C</div>
+                <div id="sizeTextDays" class="weatherWidgetRow pb-1 ">Mín: {{weather.days[3].tempmin}}°C</div>
+
+                <!-- <div class="weatherWidgetRow">Humedad: {{weather.currentConditions.humidity}}%</div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<br>

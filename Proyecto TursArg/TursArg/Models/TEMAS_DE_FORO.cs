@@ -14,18 +14,10 @@ namespace TursArg.Models
     
     public partial class TEMAS_DE_FORO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TEMAS_DE_FORO()
-        {
-            this.PUBLICACIONES = new HashSet<PUBLICACIONES>();
-        }
-    
         public int idTema { get; set; }
         public string nombreDeTema { get; set; }
         public Nullable<int> idUserForo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PUBLICACIONES> PUBLICACIONES { get; set; }
-        public virtual USUARIOS USUARIOS { get; set; }
+        public Nullable<System.DateTime> fechaTema { get; set; }
+        public Nullable<System.DateTime> fechaCierre { get; set; }
     }
 }

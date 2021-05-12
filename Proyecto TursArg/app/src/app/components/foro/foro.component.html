@@ -1,1 +1,136 @@
-<p>foro works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+    <br>
+    <div class="abs-center" style="padding-left: 1.3rem;">
+
+        <h2 style="font-weight: 600;"> Foro TursArg</h2>
+    </div>
+
+
+    <div class="container abs-center mt-2">
+        <ul>
+            <h4 style="font-weight: 550;">Reglas del foro:</h4>
+            <li>
+                Las peleas entre miembros deben evitarse.
+            </li>
+            <li>
+                El vocabulario es libre siempre y cuando no se utilice para insultar.
+            </li>
+            <li>
+                Temas repetitivos con el mismo mensaje serán borrados.
+            </li>
+            <li>
+                No están permitidos mensaje cuyo contenido sea agraviante, discriminatorio, insultante, o difamatorio para cualquier miembro.
+            </li>
+            <li>
+                El foro es constantemente revisado, pero en caso de que alguna situación no haya sido controlada, pueden consultar a los moderadores o administración en caso de cualquier anomalía.
+            </li>
+            <li>
+                La finalidad de este foro es propiciar un espacio de dialogo y discusión sobre los temas publicados en TursArg.com
+            </li>
+            <li>
+                Al participar en este foro aceptar seguir y cumplir las reglas que se exponen en este hilo.
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="container">
+        <div *ngIf="Perfil" class="rows">
+            <div class="col">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#temadeforoModal">Añadir un Tema Debate</button>
+                </div>
+            </div>
+        </div>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Comenzado por</th>
+                    <th scope="col">fecha Inicio</th>
+                    <!--<th scope="col">Replicas</th>-->
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let post of tema_de_foro; index as I">
+                    <th scope="row">{{I + 1}}</th>
+                    <td><a [routerLink]="['/publicaciones', post.idTema,post.nombreDeTema,id]" class="nav-link" href="">{{post.nombreDeTema}}</a></td>
+
+                    <div *ngFor="let user  of usuarios">
+
+                        <div *ngIf="user.idUsuario==post.idUserForo">
+                            <td>{{user.nombre}} {{user.apellido}}</td>
+                        </div>
+                    </div>
+
+
+
+                    <td>{{post.fechaTema|date: "dd-MM-yyyy hh:mm:ss"}}</td>
+
+                    <!-- <div *ngFor="let publi  of publicaciones">
+
+                        <div *ngIf="publi.idTema_publicacion==post.idTema; let replica=last">
+
+                        </div>
+                        {{replica}}
+                    </div>-->
+
+
+
+
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="temadeforoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Añadir Tema a Debatir</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tema de Debate:</label>
+                        <input type="text" class="form-control" id="nombreDeTema" name="nombreDeTema" formControlName="nombreDeTema">
+                        <span class="form-text text-danger" *ngIf="CampoValido('nombreDeTema')">Dato requerido</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Crear Tema</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<app-footer></app-footer>

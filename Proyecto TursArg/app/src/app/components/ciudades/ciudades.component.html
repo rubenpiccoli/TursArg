@@ -1,1 +1,52 @@
-<p>ciudades works!</p>
+<app-navbar></app-navbar>
+<app-modificar-ciudad></app-modificar-ciudad>
+<div class="container">
+    <br>
+    <h2 style="padding-left: 1rem;">Ciudades</h2>
+    <br>
+    <div class="row">
+        <div class="col">
+            <div style="padding-left: 1rem;" class="form-group">
+
+                <input type="text" class="form-control" placeholder="Filtrar Ciudad" [(ngModel)]="filtro" name="filtro">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="rows">
+        <div class="col">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                    data-target="#ciudadModal">Nueva ciudad</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <th>Codigo Postal</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let post of ciudad  | filtroCiudad:filtro">
+                        <td>{{post.codPostal}}</td>
+                        <td>{{post.nombreCiudad}}</td>
+                        <td>{{post.descripcionCiudad}}</td>
+                        <td><button type="button" class="btn btn-primary btn-sm" (click)="premodificarciudad(post)"
+                                data-toggle="modal" data-target="#ciudadModal">Modificar</button></td>
+                        <td><button type="button" class="btn btn-danger btn-sm"
+                                (click)="borrarCiudad(post)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>

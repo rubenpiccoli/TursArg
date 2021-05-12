@@ -6,6 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TursArg.Models;
@@ -16,57 +18,12 @@ namespace TursArg.Controllers
     public class USUARIOS1Controller : ApiController
     {
         private BDTursArgEntities db = new BDTursArgEntities();
-        private int id;
 
         // GET: api/USUARIOS1
         public IQueryable<USUARIOS> GetUSUARIOS()
         {
+           // db.Configuration.ProxyCreationEnabled = false;
             return db.USUARIOS;
-        }
-
-        [HttpGet]
-        [Route ("api/USUARIOS1/Saludar")]
-        public Respuesta Saludar()
-        {
-            Respuesta oRespuesta = new Respuesta();
-            oRespuesta.Mensaje = "Hola Mundo";
-            oRespuesta.Resultado = 1;
-
-            return (oRespuesta);
-        }
-
-        [HttpPost]
-        [Route("api/USUARIOS1/Login")]
-        public Respuesta Login(USUARIOS oLogin)
-        {
-            Respuesta oRespuesta = new Respuesta();
-
-            
-
-            using (BDTursArgEntities db = new BDTursArgEntities()) 
-            {
-                var lista = db.USUARIOS.Where(a => a.email == oLogin.email && a.contrasenia == oLogin.contrasenia).ToList();
-
-                if (lista.Count() > 0) 
-                {
-                    oRespuesta.Resultado = 1;
-                    oRespuesta.Mensaje = "login correcto";
-                    ///// genera el Token ////
-                    oRespuesta.Datos = Guid.NewGuid().ToString();
-
-                    USUARIOS uSUARIOS = lista.FirstOrDefault();
-                    uSUARIOS.Token = oRespuesta.Datos.ToString();
-                    ///graba la modifcacion(confirma) el Token///
-                    db.Entry(uSUARIOS).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                } else
-                {
-                    oRespuesta.Mensaje = "login Incorrecto";
-                    oRespuesta.Resultado = 0;
-                }
-            }
-            
-            return (oRespuesta);
         }
 
         // GET: api/USUARIOS1/5
@@ -81,14 +38,30 @@ namespace TursArg.Controllers
 
             return Ok(uSUARIOS);
         }
+
+        // GET: api/USUARIOS1/5
+        [ResponseType(typeof(USUARIOS))]
+        public IHttpActionResult GetEmail(string email)
+        {
+
+            var uSUARIOS = from c in db.USUARIOS
+                           where (c.email == (email))
+                           select c;
+            if (uSUARIOS == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(uSUARIOS);
+        }
         // GET: api/USUARIOS1/5
         [ResponseType(typeof(USUARIOS))]
         public IHttpActionResult GetUSUARIOS(string Token)
         {
 
             var uSUARIOS = db.USUARIOS.Where(a => a.Token == Token);
-           
-                
+
+
             if (uSUARIOS == null)
             {
                 return NotFound();
@@ -101,7 +74,6 @@ namespace TursArg.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUSUARIOS(int id, USUARIOS uSUARIOS)
         {
-                      
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -111,6 +83,7 @@ namespace TursArg.Controllers
             {
                 return BadRequest();
             }
+            
 
             db.Entry(uSUARIOS).State = EntityState.Modified;
 
@@ -134,6 +107,8 @@ namespace TursArg.Controllers
         }
 
         // POST: api/USUARIOS1
+
+        //Registrar usuarios
         [ResponseType(typeof(USUARIOS))]
         public IHttpActionResult PostUSUARIOS(USUARIOS uSUARIOS)
         {
@@ -142,12 +117,76 @@ namespace TursArg.Controllers
                 return BadRequest(ModelState);
             }
 
+            // Encripta contraseña
+            var Encript = uSUARIOS.contrasenia;
+            uSUARIOS.contrasenia = Encriptacion.Encriptacion.GetSHA256(Encript);
+
+            // verificar usuarios
 
             uSUARIOS.rolAdmin = false;
             db.USUARIOS.Add(uSUARIOS);
             db.SaveChanges();
+            
+
+            
 
             return CreatedAtRoute("DefaultApi", new { id = uSUARIOS.idUsuario }, uSUARIOS);
+        }
+
+        // Login o autenticación de usuario
+        [HttpPost]
+        [Route("api/USUARIOS1/login")]
+        public Respuesta AutenticarUsuario(USUARIOS val)
+        {
+            Respuesta oRespuesta = new Respuesta();
+
+            // encripta la passw ingresada por el usuario para revisar si coincide con la password encriptada anteriormente
+            string oValPass = Encriptacion.Encriptacion.GetSHA256(val.contrasenia);
+            val.contrasenia = oValPass;
+
+            try
+            {
+                var usuarioRegistrado = db.USUARIOS.Where(a => a.email == val.email && a.contrasenia == val.contrasenia).ToList();
+
+                var usuarioAdmin = usuarioRegistrado[0].rolAdmin;
+                if (usuarioRegistrado.Count > 0)
+                {
+                    if (usuarioAdmin == true)
+                    {
+                        oRespuesta.Resultado = 3;
+                        oRespuesta.Mensaje = "Login correcto";
+                    }
+                    else
+                    {
+                        oRespuesta.Resultado = 1;
+                        oRespuesta.Mensaje = "Login correcto";
+                    }
+                    
+                    ///// genera el Token ////
+                    oRespuesta.Datos = Guid.NewGuid().ToString();
+
+                    USUARIOS uSUARIOS = usuarioRegistrado.FirstOrDefault();
+                    uSUARIOS.Token = oRespuesta.Datos.ToString();
+                    ///graba la modifcacion(confirma) el Token///
+                    db.Entry(uSUARIOS).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    oRespuesta.Resultado = 0;
+                    oRespuesta.Mensaje = "Ocurrió un error";
+                }
+                return oRespuesta;
+            }
+            catch (Exception ex)
+            {
+
+                oRespuesta.Mensaje = "Ocurrió un error. Intente más tarde." + ex.Message;
+                return oRespuesta;
+            }
+
+
+
         }
 
         // DELETE: api/USUARIOS1/5
@@ -181,3 +220,5 @@ namespace TursArg.Controllers
         }
     }
 }
+
+

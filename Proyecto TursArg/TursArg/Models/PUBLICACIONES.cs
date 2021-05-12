@@ -16,11 +16,8 @@ namespace TursArg.Models
     {
         public int idPublicacion { get; set; }
         public Nullable<System.DateTime> fechaPublicacion { get; set; }
-        public string texto { get; set; }
+        public string textoPublicacion { get; set; }
         public Nullable<int> idUserPublicacion { get; set; }
         public Nullable<int> idTema_publicacion { get; set; }
-    
-        public virtual TEMAS_DE_FORO TEMAS_DE_FORO { get; set; }
-        public virtual USUARIOS USUARIOS { get; set; }
     }
 }

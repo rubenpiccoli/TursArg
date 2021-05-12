@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Login TursArg</title>
     <!--<link rel="stylesheet" href="login.component.css">-->
@@ -33,25 +34,32 @@
                                 <form [formGroup]="formLogin" (submit)="onSubmit()" autocomplete="off">
                                     <div class="form-label-group">
                                         <h5>Email</h5>
-                                        <input type="email" style="padding-left: 1rem;" type="email" id="email" name="email" formControlName="email" class="form-control" required autofocus>
+                                        <input type="email" style="padding-left: 1rem;" type="email" id="email"
+                                            name="email" formControlName="email" class="form-control" required
+                                            autofocus>
 
                                         <label for="inputEmail"></label>
                                     </div>
 
                                     <div class="form-label-group">
                                         <h5>Contraseña</h5>
-                                        <input style="padding-left: 1rem;" type="password" id="contrasenia" name="contrasenia" formControlName="contrasenia" class="form-control" required>
+                                        <input style="padding-left: 1rem;" type="password" id="contrasenia"
+                                            name="contrasenia" formControlName="contrasenia" class="form-control"
+                                            required>
                                         <label for="inputPassword"></label>
                                     </div>
                                     <div class="text-right">
                                         <a href="">¿Olvidaste la contraseña?</a>
                                     </div>
-                                    <div class="custom-control custom-checkbox mb-3">
+                                    <div class="custom-control custom-checkbox mb-3 mt-3">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Recuerda la
+                                        <label style="padding-left: 1.3rem;" class="custom-control-label"
+                                            for="customCheck1">Recuerda la
                                             contraseña</label>
                                     </div>
-                                    <button style="font-weight: 700;" class=" btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2" type="submit">Iniciar Sesion</button>
+                                    <button style="font-weight: 700;"
+                                        class=" btn btn-lg btn-primary btn-block btn-login  mb-2 pb-2"
+                                        type="submit">Iniciar Sesion</button>
                                     <div class="text-center py-2">
                                         <a routerLink="/registerUser" href="">Registrate aqui</a>
                                         <br>
@@ -70,9 +78,15 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 <!-- Aca llamamos al componente del footer -->

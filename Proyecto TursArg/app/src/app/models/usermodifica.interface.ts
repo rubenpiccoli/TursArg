@@ -1,13 +1,13 @@
 export interface usermodifica {
-  idUsuario:number,
-  urlFotoUsuario:string, 
+  idUsuario: number,
+  urlFotoUsuario: string,
   nombreUsuario: string,
   nombre: string,
   apellido: string,
   telefono: string,
   contrasenia: string,
-      //'repitaContrasenia': 
+  //'repitaContrasenia': 
   rolAdmin: boolean,
-  email: string,  
-  Token:string
+  email: string,
+  Token: string
 }

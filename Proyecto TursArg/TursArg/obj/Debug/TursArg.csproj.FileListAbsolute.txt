@@ -701,4 +701,3 @@ C:\Users\Leandro\Desktop\rama dev tursarg\proyecto-g1c-tursarg-dev-team\Proyecto
 C:\Users\Leandro\Desktop\rama dev tursarg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.dll
 C:\Users\Leandro\Desktop\rama dev tursarg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.pdb
 C:\Users\Leandro\Desktop\rama dev tursarg\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csprojAssemblyReference.cache
-C:\Users\Rubén\source\repos\proyecto-g1c-tursarg-dev-team\Proyecto TursArg\TursArg\obj\Debug\TursArg.csprojAssemblyReference.cache
